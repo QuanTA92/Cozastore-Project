@@ -1,12 +1,12 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
 @Entity(name = "category")
 public class CategoryEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -19,6 +19,18 @@ public class CategoryEntity {
 
     @OneToMany(mappedBy = "category")
     private List<ProductEntity> products;
+
+    @OneToMany(mappedBy = "category")
+    private List<CarouselEntity> carousels;
+
+    public List<CarouselEntity> getCarousels() {
+        return carousels;
+    }
+
+
+    public void setCarousels(List<CarouselEntity> carousels) {
+        this.carousels = carousels;
+    }
 
     public int getId() {
         return id;

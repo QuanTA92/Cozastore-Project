@@ -1,23 +1,22 @@
-package com.cybersoft.cozastore.payload.request;
+package com.cybersoft.cozaStore.payload.request;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 
 public class SignUpRequest {
-
     @NotNull
-    @NotBlank(message = "User name không được rỗng")
+    @NotBlank(message = "User Name khong duoc rong")
     private String userName;
-
-    @NotNull
-    @NotBlank(message = "Password không được rỗng")
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")
+    @NotNull
+    @NotBlank(message = "Password khong duoc rong")
     private String password;
 
-    @NotNull
-    @NotBlank(message = "Email không được rỗng")
     @Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
+    @NotNull
+    @NotBlank(message = "Email khong duoc rong")
     private String email;
 
     public String getUserName() {

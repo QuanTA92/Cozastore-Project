@@ -1,9 +1,7 @@
-package com.cybersoft.cozastore.service.imp;
+package com.cybersoft.cozaStore.service.imp;
 
-import com.cybersoft.cozastore.payload.request.SignUpRequest;
+import com.cybersoft.cozaStore.payload.request.SignUpRequest;
 
 public interface LoginServiceImp {
-
-    boolean insertUser(SignUpRequest signUpRequest);
-
+    boolean insertUser(SignUpRequest signUpRequest );
 }

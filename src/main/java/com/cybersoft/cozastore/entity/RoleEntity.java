@@ -1,25 +1,25 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "role")
+@Entity(name="role")
 public class RoleEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name="name")
     private String name;
 
-    @Column(name = "create_date")
+    @Column(name="create_date")
     private Date createDate;
 
-    //Bên này không giữ khóa ngoại nên là onetomany
     @OneToMany(mappedBy = "role")
     private List<UserEntity> users;
+
 
     public int getId() {
         return id;

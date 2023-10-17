@@ -4,34 +4,27 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity(name = "cart")
-public class CartEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@Entity(name = "product_order")
+public class ProductOrderEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_product")
     private ProductEntity product;
 
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "id_order")
+    private OrderEntity order;
+
     @Column(name = "quanity")
     private int quanity;
 
-    @ManyToOne
-    @JoinColumn(name = "id_user")
-    private UserEntity user;
+    @Column(name = "price")
+    private double price;
 
     @Column(name = "create_date")
     private Date createDate;
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public ProductEntity getProduct() {
         return product;
@@ -39,6 +32,14 @@ public class CartEntity {
 
     public void setProduct(ProductEntity product) {
         this.product = product;
+    }
+
+    public OrderEntity getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderEntity order) {
+        this.order = order;
     }
 
     public int getQuanity() {
@@ -49,12 +50,12 @@ public class CartEntity {
         this.quanity = quanity;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public double getPrice() {
+        return price;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public Date getCreateDate() {

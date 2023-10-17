@@ -1,48 +1,37 @@
-package com.cybersoft.cozastore.service;
+package com.cybersoft.cozaStore.service;
 
-import com.cybersoft.cozastore.entity.CategoryEntity;
-import com.cybersoft.cozastore.entity.ColorEntity;
-import com.cybersoft.cozastore.entity.ProductEntity;
-import com.cybersoft.cozastore.entity.SizeEntity;
-import com.cybersoft.cozastore.repository.ProductRepository;
-import com.cybersoft.cozastore.service.imp.ProductServiceImp;
+import com.cybersoft.cozaStore.entity.*;
+import com.cybersoft.cozaStore.repository.ProductRepositoty;
+import com.cybersoft.cozaStore.service.imp.ProductSeviceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
 
 @Service
-public class ProductService implements ProductServiceImp {
+public class ProductSevice implements ProductSeviceImp {
+    @Autowired
+    private ProductRepositoty productRepositoty;
 
     @Value("${root.folder}")
     private String rootFolder;
-
-    @Autowired
-    private ProductRepository productRepository;
-
     @Override
     public boolean insertProduct(String name, MultipartFile file, double price, int quantity, int idColor, int idSize, int idCategory) throws IOException {
 
-        String pathImage = rootFolder + "\\" + file.getOriginalFilename();
-
+        String pathImage= rootFolder + "\\" + file.getOriginalFilename();
 
         Path path = Paths.get(rootFolder);
         Path pathImageCopy = Paths.get(pathImage);
-
         if(!Files.exists(path)){
             Files.createDirectory(path);
         }
 
-        Files.copy(file.getInputStream(),pathImageCopy, StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(file.getInputStream(), pathImageCopy, StandardCopyOption.REPLACE_EXISTING);
 
-        ProductEntity productEntity = new ProductEntity();
+        ProductEntity productEntity =  new ProductEntity();
         productEntity.setName(name);
         productEntity.setImage(file.getOriginalFilename());
         productEntity.setPrice(price);
@@ -60,8 +49,7 @@ public class ProductService implements ProductServiceImp {
         categoryEntity.setId(idCategory);
         productEntity.setCategory(categoryEntity);
 
-        productRepository.save(productEntity);
-
+        productRepositoty.save(productEntity);
         return false;
     }
 }

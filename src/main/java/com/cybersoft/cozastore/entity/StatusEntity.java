@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "color")
-public class ColorEntity {
+@Entity(name = "status")
+public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,9 +17,8 @@ public class ColorEntity {
     @Column(name = "create_date")
     private Date createDate;
 
-    @OneToMany(mappedBy = "color")
-    private List<ProductEntity> products;
-
+    @OneToMany(mappedBy = "status")
+    private List<OrderEntity> orders;
 
     public int getId() {
         return id;
@@ -45,11 +44,11 @@ public class ColorEntity {
         this.createDate = createDate;
     }
 
-    public List<ProductEntity> getProducts() {
-        return products;
+    public List<OrderEntity> getOrders() {
+        return orders;
     }
 
-    public void setProducts(List<ProductEntity> products) {
-        this.products = products;
+    public void setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
     }
 }

@@ -21,47 +21,44 @@ $(document).ready(function(){
                 password: password
             }
         }).done(function(data){
-
-            if(data && data.statusCode == 200) {
-                localStorage.setItem("token", data.data)
-
-                // window.location='index.html'
-
-            } else{
-                alert("Sai email hoặc mật khẩu.")
-            }
+        if(data && data.statusCode == 200){
+            localStore.setItem("token", data.data);
+        }else{
+            alert("Sai email hoac mat khau")
+        }
             console.log("server tra ve ", data)
         })
     })
+        //Xử ý đăng ký
+        $("#btn-sign-up").click(function(){
+                // .val() : Lấy giá trị của thẻ input được chỉ định
+                var username = $("#user-signup").val()
+                var password = $("#pass-signup").val()
+                var repassword = $("#re-pass-signup").val()
+                var email = $("#email-signup").val()
+                // Xuất giá trị ra trên tab console trên trình duyệt
+                console.log("username : ",username, " password : ",password,
+                "repassword :", repassword, "email :", email
+                );
 
-    //  Xử lý đăng kí
+                //ajax : Dùng để call ngầm API mà không cần trình duyệt
+                //axios, fetch
+                //data : chỉ có khi tham số truyền ngầm
+                $.ajax({
+                    url: "http://localhost:8080/login/signup",
+                    method: "post",
+                    contentType: "application/json",
 
-    $("#btn-sign-up").click(function(){
-        
-        var username = $("#user-sign-up").val()
-        var password = $("#pass-sign-up").val()
-        var repassword = $("#re-pass-sign-up").val()
-        var email = $("#email-sign-up").val()
-        
-        
-        console.log("username : ",username, " password : ",password, 
-               " repassword ", repassword, " email ", email );
+                    data: JSON.stringify({
+                    username: username,
+                    password: password,
+                    //repassword: repassword,
+                    email: email
+                    })
 
-        $.ajax({
-            url: "http://localhost:8080/login/signup",
-            method: "post",
-            contentType: "application/json",
-            data: JSON.stringify({
-                userName: username, 
-                password: password,
-                email: email
+                }).done(function(data){
+
+                    console.log("server tra ve ", data)
+                })
             })
-
-
-        }).done(function(data){
-
-            console.log("server tra ve ", data)
-        })
-    })
-
 })

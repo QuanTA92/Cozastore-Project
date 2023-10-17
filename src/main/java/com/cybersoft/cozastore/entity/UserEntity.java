@@ -1,22 +1,23 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
+import java.util.List;
 
-@Entity(name = "user")
+@Entity(name="user")
 public class UserEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "username")
+    @Column(name="username")
     private String username;
 
-    @Column(name = "password")
+    @Column(name="password")
     private String password;
 
-    @Column(name = "email")
+    @Column(name="email")
     private String email;
 
     @Column(name = "create_date")
@@ -25,6 +26,39 @@ public class UserEntity {
     @ManyToOne
     @JoinColumn(name = "id_role")
     private RoleEntity role;
+
+    @OneToMany(mappedBy = "user")
+    private List<BlogEntity> blogs;
+
+    @OneToMany(mappedBy = "user")
+    private List<OrderEntity> orders;
+
+    @OneToMany(mappedBy = "user")
+    private List<CartEntity> carts;
+
+    public List<BlogEntity> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<BlogEntity> blogs) {
+        this.blogs = blogs;
+    }
+
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
+    }
+
+    public List<CartEntity> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<CartEntity> carts) {
+        this.carts = carts;
+    }
 
     public int getId() {
         return id;

@@ -1,6 +1,7 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,20 @@ public class ProductEntity {
     private ColorEntity color;
 
     @OneToMany(mappedBy = "product")
+    private List<ProductOrderEntity> productOrders;
+
+    @OneToMany(mappedBy = "product")
     private List<CartEntity> carts;
+
+
+
+    public List<ProductOrderEntity> getProductOrders() {
+        return productOrders;
+    }
+
+    public void setProductOrders(List<ProductOrderEntity> productOrders) {
+        this.productOrders = productOrders;
+    }
 
     public List<CartEntity> getCarts() {
         return carts;

@@ -1,12 +1,12 @@
 package com.cybersoft.cozaStore.entity;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "color")
-public class ColorEntity {
+@Entity(name = "tag")
+public class TagEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,8 +17,16 @@ public class ColorEntity {
     @Column(name = "create_date")
     private Date createDate;
 
-    @OneToMany(mappedBy = "color")
-    private List<ProductEntity> products;
+    public List<BlogTagEntity> getBlogTags() {
+        return blogTags;
+    }
+
+    public void setBlogTags(List<BlogTagEntity> blogTags) {
+        this.blogTags = blogTags;
+    }
+
+    @OneToMany(mappedBy = "tag")
+    private List<BlogTagEntity> blogTags;
 
 
     public int getId() {
@@ -44,12 +52,5 @@ public class ColorEntity {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-
-    public List<ProductEntity> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<ProductEntity> products) {
-        this.products = products;
-    }
 }
+

@@ -3,26 +3,28 @@ package com.cybersoft.cozaStore.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
-@Entity(name = "cart")
-public class CartEntity {
+@Entity(name = "orders")
+public class OrderEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "id_product")
-    private ProductEntity product;
-
-    @Column(name = "quanity")
-    private int quanity;
-
-    @ManyToOne
     @JoinColumn(name = "id_user")
     private UserEntity user;
 
+    @ManyToOne
+    @JoinColumn(name = "id_status")
+    private StatusEntity status;
+
     @Column(name = "create_date")
     private Date createDate;
+
+    @OneToMany(mappedBy = "order")
+    private List<ProductOrderEntity> productOrders;
 
 
     public int getId() {
@@ -33,22 +35,6 @@ public class CartEntity {
         this.id = id;
     }
 
-    public ProductEntity getProduct() {
-        return product;
-    }
-
-    public void setProduct(ProductEntity product) {
-        this.product = product;
-    }
-
-    public int getQuanity() {
-        return quanity;
-    }
-
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
-    }
-
     public UserEntity getUser() {
         return user;
     }
@@ -57,11 +43,27 @@ public class CartEntity {
         this.user = user;
     }
 
+    public StatusEntity getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEntity status) {
+        this.status = status;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public List<ProductOrderEntity> getProductOrders() {
+        return productOrders;
+    }
+
+    public void setProductOrders(List<ProductOrderEntity> productOrders) {
+        this.productOrders = productOrders;
     }
 }

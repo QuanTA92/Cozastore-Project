@@ -1,12 +1,11 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
-import javax.swing.*;
+import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "blog")
 public class BlogEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,17 +14,40 @@ public class BlogEntity {
     private String title;
 
     @Column(name = "image")
-    private byte[] image;
+    private String image;
 
     @Column(name = "content")
     private String content;
 
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private UserEntity user;
+
+    @OneToMany(mappedBy = "blog")
+    private List<BlogTagEntity> blogTags;
+
+    @OneToMany(mappedBy = "blog")
+    private List<CommentEntity> comments;
+
     @Column(name = "create_date")
     private Date createDate;
 
-    @ManyToOne
-    @JoinColumn(name = "id_user")
-    private UserEntity idUser;
+    public List<BlogTagEntity> getBlogTags() {
+        return blogTags;
+    }
+
+
+    public void setBlogTags(List<BlogTagEntity> blogTags) {
+        this.blogTags = blogTags;
+    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
 
     public int getId() {
         return id;
@@ -43,11 +65,11 @@ public class BlogEntity {
         this.title = title;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -59,19 +81,19 @@ public class BlogEntity {
         this.content = content;
     }
 
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
-    }
-
-    public UserEntity getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(UserEntity idUser) {
-        this.idUser = idUser;
     }
 }
