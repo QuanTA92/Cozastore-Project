@@ -6,6 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 public interface ProductSeviceImp {
-    boolean insertProduct( String name, MultipartFile file,  double price, int quantity,  int idColor,
+    boolean insertProduct( String name, MultipartFile file,  double price, int quanity,  int idColor,
                            int idSize,  int idCategory) throws IOException;
 }

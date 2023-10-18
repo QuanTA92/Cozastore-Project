@@ -19,9 +19,9 @@ public class ProductSevice implements ProductSeviceImp {
     @Value("${root.folder}")
     private String rootFolder;
     @Override
-    public boolean insertProduct(String name, MultipartFile file, double price, int quantity, int idColor, int idSize, int idCategory) throws IOException {
+    public boolean insertProduct(String name, MultipartFile file, double price, int quanity, int idColor, int idSize, int idCategory) throws IOException {
 
-        String pathImage= rootFolder + "\\" + file.getOriginalFilename();
+        String pathImage= rootFolder + "/" + file.getOriginalFilename();
 
         Path path = Paths.get(rootFolder);
         Path pathImageCopy = Paths.get(pathImage);
@@ -35,7 +35,7 @@ public class ProductSevice implements ProductSeviceImp {
         productEntity.setName(name);
         productEntity.setImage(file.getOriginalFilename());
         productEntity.setPrice(price);
-        productEntity.setQuanity(quantity);
+        productEntity.setQuanity(quanity);
 
         ColorEntity colorEntity = new ColorEntity();
         colorEntity.setId(idColor);
@@ -52,4 +52,6 @@ public class ProductSevice implements ProductSeviceImp {
         productRepositoty.save(productEntity);
         return false;
     }
+
+
 }
