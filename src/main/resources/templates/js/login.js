@@ -25,12 +25,14 @@ $(document).ready(function(){
             if(data && data.statusCode == 200) {
                 localStorage.setItem("token", data.data)
 
-                // window.location='index.html'
+                 window.location='product.html'
 
             } else{
                 alert("Sai email hoặc mật khẩu.")
             }
             console.log("server tra ve ", data)
+
+            window.location.href = 'product.html';
         })
     })
 
@@ -61,6 +63,8 @@ $(document).ready(function(){
         }).done(function(data){
 
             console.log("server tra ve ", data)
+
+
         })
     })
 

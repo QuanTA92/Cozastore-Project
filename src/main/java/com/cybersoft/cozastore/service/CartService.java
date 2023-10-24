@@ -62,6 +62,7 @@ public class CartService implements CartServiceImp {
         for (CartEntity c: cartEntities){
             if (c.getUser().getId() == idUser){
                 CartResponse cartTemp = new CartResponse();
+
                 cartTemp.setCart(c.getId());
                 cartTemp.setQuanity(c.getQuanity());
                 cartTemp.setNameProduct(c.getProduct().getName());

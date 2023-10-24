@@ -60,7 +60,15 @@ public class SecurityConfig {
                 .antMatchers("/login/**").permitAll() //permitALl() : nếu có .per thì link này ai gọi cũng được tất cả (ALL)
                 .antMatchers("/file/**").permitAll()
                 .antMatchers("/cart/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/product").hasRole("ADMIN") // link /product với phương thức POST phải có role ADMIN mới truy cập được
+                .antMatchers("/product/**").permitAll()
+
+                .antMatchers(HttpMethod.GET, "/product").permitAll()
+                .antMatchers(HttpMethod.POST, "/product").permitAll()
+                .antMatchers(HttpMethod.PUT, "/product").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/product").permitAll()
+
+                .antMatchers(HttpMethod.GET, "/category").permitAll()
+                 // link /product với phương thức POST phải có role ADMIN mới truy cập được
                 .antMatchers(HttpMethod.GET, "/product").permitAll()
                 .antMatchers(HttpMethod.PUT, "/product").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/cart").hasRole("USER")
