@@ -38,4 +38,10 @@ public class ProductController {
 
         return new ResponseEntity<>("Insert Product", HttpStatus.OK);
     }
+
+    @PutMapping("")
+    public ResponseEntity<?> addProduct(){
+
+        return new ResponseEntity<>("Hello add", HttpStatus.OK);
+    }
 }

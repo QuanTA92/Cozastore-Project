@@ -1,7 +1,7 @@
 package com.cybersoft.cozaStore.service;
 
 import com.cybersoft.cozaStore.entity.*;
-import com.cybersoft.cozaStore.repository.ProductRepositoty;
+import com.cybersoft.cozaStore.repository.ProductRepository;
 import com.cybersoft.cozaStore.service.imp.ProductSeviceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +14,7 @@ import java.nio.file.*;
 @Service
 public class ProductSevice implements ProductSeviceImp {
     @Autowired
-    private ProductRepositoty productRepositoty;
+    private ProductRepository productRepository;
 
     @Value("${root.folder}")
     private String rootFolder;
@@ -49,7 +49,7 @@ public class ProductSevice implements ProductSeviceImp {
         categoryEntity.setId(idCategory);
         productEntity.setCategory(categoryEntity);
 
-        productRepositoty.save(productEntity);
+        productRepository.save(productEntity);
         return false;
     }
 

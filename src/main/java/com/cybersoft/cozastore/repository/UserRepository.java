@@ -11,4 +11,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     UserEntity findByEmail(String email);
     List<UserEntity> findByUsernameAndPassword(String username, String password);
+    Boolean existsByUsername(String username);
+    Boolean existsByEmail(String email);
 }

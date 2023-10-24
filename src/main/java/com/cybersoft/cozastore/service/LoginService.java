@@ -41,4 +41,9 @@ public class LoginService implements LoginServiceImp {
 
         return isSuccess;
     }
+
+    public boolean checkLogin(String username, String password){
+        List<UserEntity> list = userRepository.findByUsernameAndPassword(username,password);
+        return list.size() > 0;
+    }
 }

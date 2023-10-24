@@ -1,6 +1,6 @@
 package com.cybersoft.cozaStore.controller;
 
-import com.cybersoft.cozaStore.payload.BaseResponse;
+import com.cybersoft.cozaStore.payload.response.BaseResponse;
 import com.cybersoft.cozaStore.service.imp.CategoryServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

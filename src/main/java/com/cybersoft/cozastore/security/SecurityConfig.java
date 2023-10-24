@@ -54,17 +54,18 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
 
                 // các thằng dưới là con của thằng trên ----- Matchers là so sánh kiểm tra dữ liệu
-                        .requestMatchers("/login/**").permitAll() //permitALl() : nếu có .per thì link này ai gọi cũng được tất cả (ALL)
-                        .requestMatchers("/file/**").permitAll()
-                        .requestMatchers("/cart/**").permitAll()
-                        .requestMatchers("/product/**").permitAll()
+                .requestMatchers("/login/**").permitAll() //permitALl() : nếu có .per thì link này ai gọi cũng được tất cả (ALL)
+                .requestMatchers("/file/**").permitAll()
+                .requestMatchers("/cart/**").permitAll()
+                .requestMatchers("/product/**").permitAll()
+                .requestMatchers("/category/**").permitAll()
 
-                        .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN") // link /product với phương thức POST phải có role ADMIN mới truy cập được
-                        .requestMatchers(HttpMethod.GET, "/product").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/product").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/cart").hasRole("USER")
+                .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN") // link /product với phương thức POST phải có role ADMIN mới truy cập được
+                .requestMatchers(HttpMethod.GET, "/product").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/product").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/cart").hasRole("USER")
 
-                        .anyRequest().authenticated() // Tất cả các link còn lại cần phải chứng thực
+                .anyRequest().authenticated() // Tất cả các link còn lại cần phải chứng thực
                 .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

@@ -1,4 +1,4 @@
-package com.cybersoft.cozaStore.payload;
+package com.cybersoft.cozaStore.payload.response;
 
 public class BaseResponse {
     private int statusCode;
