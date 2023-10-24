@@ -1,2 +1,2 @@
 # Cozastore-Project
-Login, UploadFile, Insert Product, InsertCart, getCartByIdUser
+Login, UploadFile, Insert Product, InsertCart, getCartByIdUser, getCategory
