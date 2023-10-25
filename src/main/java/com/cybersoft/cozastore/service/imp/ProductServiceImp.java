@@ -1,6 +1,7 @@
 package com.cybersoft.cozastore.service.imp;
 
 import com.cybersoft.cozastore.payload.response.CartResponse;
+import com.cybersoft.cozastore.payload.response.ProductDetailsResponse;
 import com.cybersoft.cozastore.payload.response.ProductResponse;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,5 +22,7 @@ public interface ProductServiceImp {
 
     boolean updateProductById(int idProduct, String name, MultipartFile file, String description , double price,
                           int quantity, int idColor, int idSize, int idCategory ) throws IOException;
+
+    List<ProductDetailsResponse> getProductDetails(int idSize, int idColor);
 
 }

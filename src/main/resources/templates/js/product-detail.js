@@ -3,6 +3,7 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get("productId");
 
+
     $.ajax({
         url: `http://localhost:8080/product/${productId}`, // Truy vấn sản phẩm chi tiết dựa trên productId
         method: "get",
@@ -14,6 +15,12 @@ $(document).ready(function () {
 
         const product = data.data[0]; // Lấy sản phẩm đầu tiên từ kết quả truy vấn
         if (product) {
+
+
+
+
+
+
             // Hiển thị thông tin sản phẩm chi tiết
             htmlAdd = `
 
@@ -74,19 +81,18 @@ $(document).ready(function () {
 
                                     <div class="p-t-33">
                                         <div class="flex-w flex-r-m p-b-10">
-                                            <div class="size-203 flex-c-m respon6">
-                                                Size
-                                            </div>
-                                            <div class="size-204 respon6-next">
-                                                <div class="rs1-select2 bor8 bg0">
-                                                    <select class="js-select2" name="time">
-                                                        <option>${product.idSize}</option>
-
-                                                    </select>
-                                                    <div class="dropDownSelect2"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                        <div class="size-203 flex-c-m respon6">
+                                                            Size
+                                                        </div>
+                                                        <div class="size-204 respon6-next">
+                                                            <div class="rs1-select2 bor8 bg0">
+                                                                <select class="js-select2" name="time" id="sizeSelect">
+                                                                    <option>${product.idSize}</option>
+                                                                </select>
+                                                                <div class="dropDownSelect2"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                         <div class="flex-w flex-r-m p-b-10">
                                             <div class="size-203 flex-c-m respon6">
@@ -94,7 +100,7 @@ $(document).ready(function () {
                                             </div>
                                             <div class="size-204 respon6-next">
                                                 <div class="rs1-select2 bor8 bg0">
-                                                    <select class="js-select2" name="time">
+                                                    <select class="js-select2" name="time" id="colorSelect">
                                                         <option>${product.idColor}</option>
                                                     </select>
                                                     <div class="dropDownSelect2"></div>
@@ -167,48 +173,7 @@ $(document).ready(function () {
                                     <div class="tab-pane fade" id="information" role="tabpanel">
                                         <div class="row">
                                             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                                <ul class="p-lr-28 p-lr-15-sm">
-                                                    <li class="flex-w flex-t p-b-7">
-                											<span class="stext-102 cl3 size-205">
-                												Weight
-                											</span>
-                                                        <span class="stext-102 cl6 size-206">
-                												0.79 kg
-                											</span>
-                                                    </li>
-                                                    <li class="flex-w flex-t p-b-7">
-                											<span class="stext-102 cl3 size-205">
-                												Dimensions
-                											</span>
-                                                        <span class="stext-102 cl6 size-206">
-                												110 x 33 x 100 cm
-                											</span>
-                                                    </li>
-                                                    <li class="flex-w flex-t p-b-7">
-                											<span class="stext-102 cl3 size-205">
-                												Materials
-                											</span>
-                                                        <span class="stext-102 cl6 size-206">
-                												60% cotton
-                											</span>
-                                                    </li>
-                                                    <li class="flex-w flex-t p-b-7">
-                											<span class="stext-102 cl3 size-205">
-                												Color
-                											</span>
-                                                        <span class="stext-102 cl6 size-206">
-                												Black, Blue, Grey, Green, Red, White
-                											</span>
-                                                    </li>
-                                                    <li class="flex-w flex-t p-b-7">
-                											<span class="stext-102 cl3 size-205">
-                												Size
-                											</span>
-                                                        <span class="stext-102 cl6 size-206">
-                												XL, L, M, S
-                											</span>
-                                                    </li>
-                                                </ul>
+
                                             </div>
                                         </div>
                                     </div>
@@ -293,6 +258,29 @@ $(document).ready(function () {
                         </div>
 
             `;
+
+                    $.ajax({
+                        url: `http://localhost:8080/size/${product.idSize}`, // Thay đổi URL tới phương thức lấy tên kích thước
+                        method: "get",
+                    }).done(function (sizeData) {
+                        if (sizeData.data && sizeData.data.length > 0) {
+                            const sizeName = sizeData.data[0].nameSize;
+                            // Cập nhật tên kích thước trong dropdown
+                            const sizeSelect = document.getElementById("sizeSelect");
+                            sizeSelect.innerHTML = `<option>${sizeName}</option>`;
+                        }
+                    });
+
+                    $.ajax({
+                        url: `http://localhost:8080/color/${product.idColor}`, // Đổi đường dẫn tương ứng
+                        method: "get",
+                    }).done(function (colorData) {
+                        // Lấy tên của idColor và thay thế cho option trong select
+                        const colorName = colorData.data[0].nameColor;
+                        $("#colorSelect option").text(colorName);
+                    });
+
+
         } else {
             htmlAdd = `<p>Product not found</p>`;
         }

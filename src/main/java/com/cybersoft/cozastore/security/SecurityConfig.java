@@ -60,17 +60,20 @@ public class SecurityConfig {
                 .antMatchers("/login/**").permitAll() //permitALl() : nếu có .per thì link này ai gọi cũng được tất cả (ALL)
                 .antMatchers("/file/**").permitAll()
                 .antMatchers("/cart/**").permitAll()
+                .antMatchers("/size/**").permitAll()
+                .antMatchers("/color/**").permitAll()
+
                 .antMatchers("/product/**").permitAll()
 
-                .antMatchers(HttpMethod.GET, "/product").permitAll()
-                .antMatchers(HttpMethod.POST, "/product").permitAll()
-                .antMatchers(HttpMethod.PUT, "/product").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/product").permitAll()
+//                .antMatchers(HttpMethod.GET, "/product/**").permitAll()
+//                .antMatchers(HttpMethod.POST, "/product/**").hasRole("ADMIN")
+//                .antMatchers(HttpMethod.PUT, "/product/{idProduct}").hasRole("ADMIN")
+//
+//                .antMatchers(HttpMethod.DELETE, "/product").hasRole("ADMIN")
 
                 .antMatchers(HttpMethod.GET, "/category").permitAll()
                  // link /product với phương thức POST phải có role ADMIN mới truy cập được
-                .antMatchers(HttpMethod.GET, "/product").permitAll()
-                .antMatchers(HttpMethod.PUT, "/product").hasRole("ADMIN")
+
                 .antMatchers(HttpMethod.GET, "/cart").hasRole("USER")
 
                 .anyRequest().authenticated() // Tất cả các link còn lại cần phải chứng thực

@@ -45,9 +45,9 @@
             </nav>
         </div>
     </div>
-<</header>
+</header>
 
-<<div class="container">
+<div class="container">
     <h1>Edit Product - ID: <span id="productId"></span></h1>
     <form id="editProductForm" method="POST" action="http://localhost:8080/product/${idProduct}" enctype="multipart/form-data">
         <div class="form-group">
@@ -92,7 +92,7 @@
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 
-<<script>
+<script>
     // Lấy idProduct từ URL
     const urlParams = new URLSearchParams(window.location.search);
     const idProduct = urlParams.get("idProduct");

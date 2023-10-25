@@ -1,6 +1,7 @@
 package com.cybersoft.cozastore.controller;
 
 import com.cybersoft.cozastore.payload.BaseResponse;
+import com.cybersoft.cozastore.payload.response.ProductDetailsResponse;
 import com.cybersoft.cozastore.payload.response.ProductResponse;
 import com.cybersoft.cozastore.service.ProductService;
 import com.cybersoft.cozastore.service.imp.ProductServiceImp;
@@ -30,7 +31,8 @@ public class ProductController {
         baseResponse.setData(productResponseList);
         baseResponse.setStatusCode(200);
 
-        return new ResponseEntity<>(baseResponse, HttpStatus.OK);    }
+        return new ResponseEntity<>(baseResponse, HttpStatus.OK);
+    }
 
     @PostMapping("")
     public ResponseEntity<?> insertProduct(@RequestParam String name, @RequestParam MultipartFile file, @RequestParam String description,
@@ -44,12 +46,6 @@ public class ProductController {
         baseResponse.setStatusCode(200);
         baseResponse.setMessage("Insert Product successfully");
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
-    }
-
-    @PutMapping("")
-    public ResponseEntity<?> editProduct(){
-
-        return new ResponseEntity<>("Hello edit", HttpStatus.OK);
     }
 
     @GetMapping("/{idProduct}")
@@ -70,6 +66,21 @@ public class ProductController {
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/details")
+    public ResponseEntity<?> getProductDetails(@RequestParam int idSize, @RequestParam int idColor) {
+        List<ProductDetailsResponse> productDetailsResponses = productServiceImp.getProductDetails(idSize,idColor);
+
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setStatusCode(200);
+        baseResponse.setMessage("Get detail product");
+        baseResponse.setData(productDetailsResponses);
+
+        return new ResponseEntity<>(baseResponse, HttpStatus.OK);
+
+    }
+
+
 
     @DeleteMapping("/{idProduct}")
     public ResponseEntity<?> deleteProductById(@PathVariable int idProduct){

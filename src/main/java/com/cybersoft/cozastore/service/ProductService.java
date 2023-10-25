@@ -1,7 +1,9 @@
 package com.cybersoft.cozastore.service;
 
 import com.cybersoft.cozastore.entity.*;
+import com.cybersoft.cozastore.payload.response.ProductDetailsResponse;
 import com.cybersoft.cozastore.payload.response.ProductResponse;
+import com.cybersoft.cozastore.payload.response.SizeResponse;
 import com.cybersoft.cozastore.repository.ColorRepository;
 import com.cybersoft.cozastore.repository.ProductRepository;
 import com.cybersoft.cozastore.repository.SizeRepository;
@@ -35,7 +37,6 @@ public class ProductService implements ProductServiceImp {
 
     @Autowired
     private ColorRepository colorRepository;
-
 
     @Override
     public boolean insertProduct(String name, MultipartFile file, String description , double price, int quantity, int idColor, int idSize, int idCategory) throws IOException {
@@ -85,10 +86,11 @@ public class ProductService implements ProductServiceImp {
 
         for (ProductEntity productEntity : productEntities) {
             ProductResponse productResponse = new ProductResponse();
+
             productResponse.setIdProduct(productEntity.getId());
 
             productResponse.setNameProduct(productEntity.getName());
-
+            productResponse.setQuantity(productEntity.getQuanity());
             productResponse.setImage(productEntity.getImage());
             productResponse.setPrice(productEntity.getPrice());
             productResponse.setDescription(productEntity.getDescription());
@@ -100,6 +102,17 @@ public class ProductService implements ProductServiceImp {
         }
 
         return productResponses;
+    }
+
+
+
+
+    public String getColorNameById(int idColor) {
+        ColorEntity colorEntity = colorRepository.findById(idColor).orElse(null);
+        if (colorEntity != null) {
+            return colorEntity.getName(); // Lấy tên của idColor
+        }
+        return null;
     }
 
     @Override
@@ -183,6 +196,31 @@ public class ProductService implements ProductServiceImp {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public List<ProductDetailsResponse> getProductDetails(int idSize, int idColor) {
+        List<SizeEntity> sizeEntities = sizeRepository.findAll();
+        List<ColorEntity> colorEntities = colorRepository.findAll();
+        List<ProductDetailsResponse> productDetailsResponses = new ArrayList<>();
+
+        for (SizeEntity sizeEntity : sizeEntities) {
+            for (ColorEntity colorEntity : colorEntities) {
+                if (sizeEntity.getId() == idSize && colorEntity.getId() == idColor) {
+                    ProductDetailsResponse productDetailsResponse = new ProductDetailsResponse();
+
+                    productDetailsResponse.setIdSize(sizeEntity.getId());
+                    productDetailsResponse.setNameSize(sizeEntity.getName());
+
+                    productDetailsResponse.setIdColor(colorEntity.getId());
+                    productDetailsResponse.setNameColor(colorEntity.getName());
+
+                    productDetailsResponses.add(productDetailsResponse);
+                }
+            }
+        }
+
+        return productDetailsResponses;
     }
 
 

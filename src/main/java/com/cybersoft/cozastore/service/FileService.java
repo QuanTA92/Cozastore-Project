@@ -19,6 +19,8 @@ public class FileService implements FileServiceImp {
     public String uploadFile(MultipartFile file) throws IOException {
         // multipartfile là dùng để tương tác với file
         String fileName = file.getOriginalFilename();
+
+
         String typeFile = file.getContentType();
         byte[] data = file.getBytes();
 

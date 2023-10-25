@@ -46,10 +46,7 @@ public class CustomAuthenProvider implements AuthenticationProvider{
                 UsernamePasswordAuthenticationToken token =
                         new UsernamePasswordAuthenticationToken(username,user.getPassword(),roles);
 
-
-
                 SecurityContextHolder.getContext().setAuthentication(token);
-
 
                 return token;
             }else {
@@ -58,7 +55,6 @@ public class CustomAuthenProvider implements AuthenticationProvider{
         } else {
             return null;
         }
-
     }
 
     @Override
