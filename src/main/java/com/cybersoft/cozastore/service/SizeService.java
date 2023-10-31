@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SizeSevice implements SizeSeviceImp {
+public class SizeService implements SizeSeviceImp {
 
     @Autowired
     private SizeRepository sizeRepository;

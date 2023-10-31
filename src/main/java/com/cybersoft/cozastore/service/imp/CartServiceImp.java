@@ -10,4 +10,8 @@ public interface CartServiceImp {
     boolean insertProductIntoCart(CartRequest cartRequest);
 
     List<CartResponse> getCart(int idUser);
+    boolean deleteProductById(int idProduct);
+
+    boolean deleteCartByIdUser(int idUser);
+
 }

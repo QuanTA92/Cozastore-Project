@@ -59,6 +59,8 @@ public class SecurityConfig {
                 .requestMatchers("/cart/**").permitAll()
                 .requestMatchers("/product/**").permitAll()
                 .requestMatchers("/category/**").permitAll()
+                .requestMatchers("/home/**").permitAll()
+                .requestMatchers("/resources/**").permitAll()
 
                 .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN") // link /product với phương thức POST phải có role ADMIN mới truy cập được
                 .requestMatchers(HttpMethod.GET, "/product").permitAll()

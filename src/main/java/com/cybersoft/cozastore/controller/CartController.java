@@ -40,4 +40,31 @@ public class CartController {
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{idProduct}")
+    public ResponseEntity<?> deleteProductById(@PathVariable int idProduct){
+
+        boolean isDeleted = cartServiceImp.deleteProductById(idProduct);
+        if (isDeleted){
+            BaseResponse baseResponse = new BaseResponse();
+            baseResponse.setMessage("Product deleted successfully");
+            baseResponse.setStatusCode(200);
+            return new ResponseEntity<>(baseResponse, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Product not found or unable to delete", HttpStatus.OK);
+        }
+    }
+
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<?> deleteCartByIdUser(@PathVariable int idUser){
+
+        boolean isDeleted = cartServiceImp.deleteCartByIdUser(idUser);
+        if (isDeleted){
+            BaseResponse baseResponse = new BaseResponse();
+            baseResponse.setMessage("Deleted cart by id user successfully");
+            baseResponse.setStatusCode(200);
+            return new ResponseEntity<>(baseResponse, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Cart not found or unable to delete", HttpStatus.OK);
+        }
+    }
 }

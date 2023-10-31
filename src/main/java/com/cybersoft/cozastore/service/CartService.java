@@ -73,4 +73,23 @@ public class CartService implements CartServiceImp {
 
         return cartResponses;
     }
+
+    @Override
+    public boolean deleteProductById(int idProduct) {
+        if (productRepository.existsById(idProduct)) {
+            productRepository.deleteById(idProduct); // Xóa sản phẩm
+            return true; // Trả về true nếu xóa thành công
+        } else {
+            return false; // Trả về false nếu không tìm thấy sản phẩm để xóa
+        }}
+
+    @Override
+    public boolean deleteCartByIdUser(int idUser) {
+        if(cartRepository.existsById(idUser)){
+            cartRepository.deleteById(idUser);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
