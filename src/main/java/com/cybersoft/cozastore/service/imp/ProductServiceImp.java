@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ProductServiceImp {
     boolean insertProduct( String name, MultipartFile file,  double price, int quanity,  int idColor,
-                           int idSize,  int idCategory) throws IOException;
+                           int idSize,  int idCategory, String description) throws IOException;
     List<ProductResponse> getAllProduct();
 
     List<ProductResponse> getProductById(int id);
@@ -19,5 +19,8 @@ public interface ProductServiceImp {
 
     boolean updateProductById(int idProduct, String name,
                               MultipartFile file, String description, double price,
-                              int quantity,int idColor, int idSize, int idCategory) throws IOException;
+                              int quanity,int idColor, int idSize, int idCategory) throws IOException;
+
+    List<ProductResponse> getProductByName(String productName);
+
 }

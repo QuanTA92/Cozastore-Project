@@ -1,7 +1,7 @@
-package com.cybersoft.cozaStore.controller;
+package com.cybersoft.cozaStore.api;
 
 import com.cybersoft.cozaStore.payload.response.BaseResponse;
-import com.cybersoft.cozaStore.service.imp.CategoryServiceImp;
+import com.cybersoft.cozaStore.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/category")
-public class CategoryController {
+@RequestMapping("/home")
+public class ApiHomeController {
+
     @Autowired
-    private CategoryServiceImp categoryServiceImp;
-
-    @GetMapping("")
+    private HomeService homeService;
+    @GetMapping("/category")
     public ResponseEntity<?> getAllCategory(){
-        BaseResponse baseresponse = new BaseResponse();
-        baseresponse.setData(categoryServiceImp.getAllCategory());
 
-        return new ResponseEntity<>("", HttpStatus.OK);
+        BaseResponse response = new BaseResponse();
+        response.setData(homeService.getAllCategory());
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
 }

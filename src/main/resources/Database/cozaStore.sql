@@ -132,30 +132,37 @@ UPDATE
 	CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
 );
+CREATE TABLE file (
+	id int auto_increment,
+	name varchar(255),
+	type varchar(255),
+	data longblob,
 
-ALTER TABLE carousel ADD CONSTRAINT fk_carousel_category_id FOREIGN KEY (id_category)REFERENCES category (id);
+	primary key (id)
+);
+ALTER TABLE carousel ADD CONSTRAINT fk_carousel_category_id FOREIGN KEY (id_category)REFERENCES category (id) ON DELETE CASCADE;
 
-ALTER TABLE user ADD CONSTRAINT fk_user_id_role FOREIGN KEY (id_role)REFERENCES role(id);
+ALTER TABLE user ADD CONSTRAINT fk_user_id_role FOREIGN KEY (id_role)REFERENCES role(id) ON DELETE CASCADE;
 
-ALTER TABLE product ADD CONSTRAINT fk_product_category_id FOREIGN KEY (id_category)REFERENCES category (id);
-ALTER TABLE product ADD CONSTRAINT fk_product_id_size FOREIGN KEY (id_size)REFERENCES size (id);
-ALTER TABLE product ADD CONSTRAINT fk_product_id_color FOREIGN KEY (id_color)REFERENCES color (id);
+ALTER TABLE product ADD CONSTRAINT fk_product_category_id FOREIGN KEY (id_category)REFERENCES category (id) ON DELETE CASCADE;
+ALTER TABLE product ADD CONSTRAINT fk_product_id_size FOREIGN KEY (id_size)REFERENCES size (id) ON DELETE CASCADE;
+ALTER TABLE product ADD CONSTRAINT fk_product_id_color FOREIGN KEY (id_color)REFERENCES color (id) ON DELETE CASCADE;
 
-ALTER TABLE cart ADD CONSTRAINT fk_cart_id_product  FOREIGN KEY (id_product) REFERENCES product (id);
-ALTER TABLE cart ADD CONSTRAINT fk_cart_id_user  FOREIGN KEY (id_user) REFERENCES user (id);
+ALTER TABLE cart ADD CONSTRAINT fk_cart_id_product  FOREIGN KEY (id_product) REFERENCES product (id)  ON DELETE CASCADE;
+ALTER TABLE cart ADD CONSTRAINT fk_cart_id_user  FOREIGN KEY (id_user) REFERENCES user (id)  ON DELETE CASCADE;
 
-ALTER TABLE product_order ADD CONSTRAINT fk_product_order_id_product  FOREIGN KEY (id_product) REFERENCES product (id);
-ALTER TABLE product_order ADD CONSTRAINT fk_product_order_id_order  FOREIGN KEY (id_order) REFERENCES orders (id);
+ALTER TABLE product_order ADD CONSTRAINT fk_product_order_id_product  FOREIGN KEY (id_product) REFERENCES product (id) ON DELETE CASCADE;
+ALTER TABLE product_order ADD CONSTRAINT fk_product_order_id_order  FOREIGN KEY (id_order) REFERENCES orders (id) ON DELETE CASCADE;
 
-ALTER TABLE orders ADD CONSTRAINT fk_orders_id_user  FOREIGN KEY (id_user) REFERENCES user (id);
-ALTER TABLE orders ADD CONSTRAINT fk_orders_id_status  FOREIGN KEY (id_status)  REFERENCES status (id);
+ALTER TABLE orders ADD CONSTRAINT fk_orders_id_user  FOREIGN KEY (id_user) REFERENCES user (id) ON DELETE CASCADE;
+ALTER TABLE orders ADD CONSTRAINT fk_orders_id_status  FOREIGN KEY (id_status)  REFERENCES status (id) ON DELETE CASCADE;
 
-ALTER TABLE comment ADD CONSTRAINT fk_comment_id_blog FOREIGN KEY (id_blog) REFERENCES blog (id);
+ALTER TABLE comment ADD CONSTRAINT fk_comment_id_blog FOREIGN KEY (id_blog) REFERENCES blog (id) ON DELETE CASCADE;
 
-ALTER TABLE blog ADD CONSTRAINT fk_blog_id_user FOREIGN KEY (id_user) REFERENCES user (id);
+ALTER TABLE blog ADD CONSTRAINT fk_blog_id_user FOREIGN KEY (id_user) REFERENCES user (id) ON DELETE CASCADE;
 
-ALTER TABLE blog_tag ADD CONSTRAINT fk_blog_tag_id_blog FOREIGN KEY (id_blog) REFERENCES blog (id);
-ALTER TABLE blog_tag ADD CONSTRAINT fk_blog_tag_id_tag FOREIGN KEY (id_tag)REFERENCES tag (id);
+ALTER TABLE blog_tag ADD CONSTRAINT fk_blog_tag_id_blog FOREIGN KEY (id_blog) REFERENCES blog (id) ON DELETE CASCADE;
+ALTER TABLE blog_tag ADD CONSTRAINT fk_blog_tag_id_tag FOREIGN KEY (id_tag)REFERENCES tag (id) ON DELETE CASCADE;
 
 
 
@@ -166,3 +173,8 @@ SELECT * FROM file f ;
 SELECT * FROM `size` s ;
 SELECT * FROM category c ;
 SELECT * FROM color c ;
+SELECT * FROM `role` r ;
+SELECT * FROM cart c ;
+
+
+DELETE  FROM cart c WHERE c.id_user = 1;
