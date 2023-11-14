@@ -43,6 +43,21 @@ public class CartController {
         baseResponse.setStatusCode(200);
 
         return new ResponseEntity<BaseResponse>(baseResponse, HttpStatus.OK);
-
     }
+
+
+    @DeleteMapping("/{idCart}")
+    public ResponseEntity<?> deleteCartById(@PathVariable int idCart){
+        boolean isDeleted = cartServiceImp.deleteCartById(idCart);
+        if (isDeleted){
+            BaseResponse baseResponse = new BaseResponse();
+            baseResponse.setStatusCode(200);
+            baseResponse.setMessage("Cart deteted successfully");
+            return new ResponseEntity<>(baseResponse, HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity<>("Cart not fount or unable to delete", HttpStatus.OK);
+        }
+    }
+
 }

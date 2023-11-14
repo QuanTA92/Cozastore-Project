@@ -1,6 +1,5 @@
 package com.cybersoft.cozastore.filter;
 
-
 import com.cybersoft.cozastore.util.JwtHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -51,15 +50,22 @@ public class JwtFilter extends OncePerRequestFilter {
                 Type listType = new TypeToken<ArrayList<SimpleGrantedAuthority>>(){}.getType();
                 List<SimpleGrantedAuthority> roles = gson.fromJson(data,listType);
 
+                for (SimpleGrantedAuthority role: roles) {
+                    System.out.println("Kiem tra role:" + role);
+                    if(role.toString().equals("ROLE_ADMIN")) {
+                        System.out.println("Kiem tra chung thuc");
+                        UsernamePasswordAuthenticationToken user =
+                                new UsernamePasswordAuthenticationToken("","",roles);
+                        SecurityContext context = SecurityContextHolder.getContext();
+                        context.setAuthentication(user);
+                    }
+                }
+
 //                List<GrantedAuthority> roles = new ArrayList<>();
 //                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("ROLE_ADMIN");
 
 //                roles.add(roles);
 
-                UsernamePasswordAuthenticationToken user =
-                        new UsernamePasswordAuthenticationToken("","",roles);
-                SecurityContext context = SecurityContextHolder.getContext();
-                context.setAuthentication(user);
 
             }
         } else {

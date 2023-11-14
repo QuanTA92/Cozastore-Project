@@ -10,4 +10,6 @@ public interface SizeServiceImp {
 
     boolean insertSize(SizeRequest sizeRequest);
 
+    List<SizeResponse> getAllSize();
+
 }

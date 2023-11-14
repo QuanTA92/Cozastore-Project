@@ -16,11 +16,6 @@ $(document).ready(function () {
         const product = data.data[0]; // Lấy sản phẩm đầu tiên từ kết quả truy vấn
         if (product) {
 
-
-
-
-
-
             // Hiển thị thông tin sản phẩm chi tiết
             htmlAdd = `
 
@@ -87,7 +82,7 @@ $(document).ready(function () {
                                                         <div class="size-204 respon6-next">
                                                             <div class="rs1-select2 bor8 bg0">
                                                                 <select class="js-select2" name="time" id="sizeSelect">
-                                                                    <option>${product.idSize}</option>
+                                                                    <option>${product.nameSize}</option>
                                                                 </select>
                                                                 <div class="dropDownSelect2"></div>
                                                             </div>
@@ -101,7 +96,7 @@ $(document).ready(function () {
                                             <div class="size-204 respon6-next">
                                                 <div class="rs1-select2 bor8 bg0">
                                                     <select class="js-select2" name="time" id="colorSelect">
-                                                        <option>${product.idColor}</option>
+                                                        <option>${product.nameColor}</option>
                                                     </select>
                                                     <div class="dropDownSelect2"></div>
                                                 </div>
@@ -258,28 +253,6 @@ $(document).ready(function () {
                         </div>
 
             `;
-
-                    $.ajax({
-                        url: `http://localhost:8080/size/${product.idSize}`, // Thay đổi URL tới phương thức lấy tên kích thước
-                        method: "get",
-                    }).done(function (sizeData) {
-                        if (sizeData.data && sizeData.data.length > 0) {
-                            const sizeName = sizeData.data[0].nameSize;
-                            // Cập nhật tên kích thước trong dropdown
-                            const sizeSelect = document.getElementById("sizeSelect");
-                            sizeSelect.innerHTML = `<option>${sizeName}</option>`;
-                        }
-                    });
-
-                    $.ajax({
-                        url: `http://localhost:8080/color/${product.idColor}`, // Đổi đường dẫn tương ứng
-                        method: "get",
-                    }).done(function (colorData) {
-                        // Lấy tên của idColor và thay thế cho option trong select
-                        const colorName = colorData.data[0].nameColor;
-                        $("#colorSelect option").text(colorName);
-                    });
-
 
         } else {
             htmlAdd = `<p>Product not found</p>`;

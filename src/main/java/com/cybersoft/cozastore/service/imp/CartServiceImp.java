@@ -11,5 +11,5 @@ public interface CartServiceImp {
 
     List<CartResponse> getCart(int idUser);
 
-
+    boolean deleteCartById(int idCart);
 }

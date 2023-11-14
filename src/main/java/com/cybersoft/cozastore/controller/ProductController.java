@@ -36,15 +36,15 @@ public class ProductController {
 
     @PostMapping("")
     public ResponseEntity<?> insertProduct(@RequestParam String name, @RequestParam MultipartFile file, @RequestParam String description,
-                                          @RequestParam double price, @RequestParam int quantity, @RequestParam int idColor,
-                                          @RequestParam int idSize, @RequestParam int idCategory
+                                           @RequestParam double price, @RequestParam int quantity, @RequestParam int idColor,
+                                           @RequestParam int idSize, @RequestParam int idCategory
     ) throws IOException {
 
         boolean isSuccess = productServiceImp.insertProduct(name, file, description, price, quantity, idColor, idSize, idCategory);
 
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setStatusCode(200);
-        baseResponse.setMessage("Insert Product successfully");
+        baseResponse.setMessage("Insert new product");
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
 
@@ -79,8 +79,6 @@ public class ProductController {
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
 
     }
-
-
 
     @DeleteMapping("/{idProduct}")
     public ResponseEntity<?> deleteProductById(@PathVariable int idProduct){

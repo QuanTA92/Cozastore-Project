@@ -11,5 +11,7 @@ public interface ColorServiceImp {
 
     boolean insertNewColor(ColorRequest colorRequest);
 
+    List<ColorResponse> getAllColor();
+
 
 }

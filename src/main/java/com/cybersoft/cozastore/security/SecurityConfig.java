@@ -58,20 +58,18 @@ public class SecurityConfig {
 
                 // các thằng dưới là con của thằng trên ----- Matchers là so sánh kiểm tra dữ liệu
                 .antMatchers("/login/**").permitAll() //permitALl() : nếu có .per thì link này ai gọi cũng được tất cả (ALL)
-                .antMatchers("/file/**").permitAll()
+                .antMatchers("/file/**").hasRole("ADMIN")
                 .antMatchers("/cart/**").permitAll()
                 .antMatchers("/size/**").permitAll()
                 .antMatchers("/color/**").permitAll()
+                .antMatchers("/category/**").permitAll()
+                .antMatchers("/role/**").permitAll()
+                .antMatchers("/**").permitAll()
 
+                .antMatchers("/product-order").permitAll()
+                .antMatchers("/user/**").permitAll()
                 .antMatchers("/product/**").permitAll()
 
-//                .antMatchers(HttpMethod.GET, "/product/**").permitAll()
-//                .antMatchers(HttpMethod.POST, "/product/**").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.PUT, "/product/{idProduct}").hasRole("ADMIN")
-//
-//                .antMatchers(HttpMethod.DELETE, "/product").hasRole("ADMIN")
-
-                .antMatchers(HttpMethod.GET, "/category").permitAll()
                  // link /product với phương thức POST phải có role ADMIN mới truy cập được
 
                 .antMatchers(HttpMethod.GET, "/cart").hasRole("USER")

@@ -13,11 +13,41 @@ public class ProductResponse {
 
     private String description;
 
-    private int idSize;
+//    private int idSize;
+//
+//    private int idColor;
+//
+//    private int idCategory;
 
-    private int idColor;
+    private String nameSize;
 
-    private int idCategory;
+    private String nameColor;
+
+    private String nameCategory;
+
+    public String getNameSize() {
+        return nameSize;
+    }
+
+    public void setNameSize(String nameSize) {
+        this.nameSize = nameSize;
+    }
+
+    public String getNameColor() {
+        return nameColor;
+    }
+
+    public void setNameColor(String nameColor) {
+        this.nameColor = nameColor;
+    }
+
+    public String getNameCategory() {
+        return nameCategory;
+    }
+
+    public void setNameCategory(String nameCategory) {
+        this.nameCategory = nameCategory;
+    }
 
     public int getQuantity() {
         return quantity;
@@ -27,13 +57,13 @@ public class ProductResponse {
         this.quantity = quantity;
     }
 
-    public int getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
-    }
+//    public int getIdCategory() {
+//        return idCategory;
+//    }
+//
+//    public void setIdCategory(int idCategory) {
+//        this.idCategory = idCategory;
+//    }
 
     public int getIdProduct() {
         return idProduct;
@@ -75,19 +105,19 @@ public class ProductResponse {
         this.description = description;
     }
 
-    public int getIdSize() {
-        return idSize;
-    }
-
-    public void setIdSize(int idSize) {
-        this.idSize = idSize;
-    }
-
-    public int getIdColor() {
-        return idColor;
-    }
-
-    public void setIdColor(int idColor) {
-        this.idColor = idColor;
-    }
+//    public int getIdSize() {
+//        return idSize;
+//    }
+//
+//    public void setIdSize(int idSize) {
+//        this.idSize = idSize;
+//    }
+//
+//    public int getIdColor() {
+//        return idColor;
+//    }
+//
+//    public void setIdColor(int idColor) {
+//        this.idColor = idColor;
+//    }
 }

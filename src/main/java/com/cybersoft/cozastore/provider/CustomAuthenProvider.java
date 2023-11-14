@@ -32,11 +32,14 @@ public class CustomAuthenProvider implements AuthenticationProvider{
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
+        System.out.println("Kiem tra username:" + username);
+
         UserEntity user = userRepository.findByEmail(username);
+        System.out.println(user.getRole().getName());
         if (username != null){
             // User tồn tại kiểm tra tiếp mật khẩu
             if (passwordEncoder.matches(password, user.getPassword())){
-                    // Tạo chứng thực --- GrantedAuthority một class chứng thực của SS
+                // Tạo chứng thực --- GrantedAuthority một class chứng thực của SS
                 List<GrantedAuthority> roles = new ArrayList<>();
                 GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(user.getRole().getName());
 

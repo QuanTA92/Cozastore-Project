@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $.ajax({
 
-        url: "http://localhost:8080/cart/1",
+        url: "http://localhost:8080/cart/{idUser}",
         method: "get",
 
     }).done(function (data) {

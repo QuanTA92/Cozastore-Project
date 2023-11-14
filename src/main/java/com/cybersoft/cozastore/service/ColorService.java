@@ -47,4 +47,20 @@ public class ColorService implements ColorServiceImp {
             return false;
         }
     }
+
+    @Override
+    public List<ColorResponse> getAllColor() {
+        List<ColorEntity> colorEntities = colorRepository.findAll();
+        List<ColorResponse> colorResponses = new ArrayList<>();
+
+        for (ColorEntity colorEntity : colorEntities){
+            ColorResponse colorResponse = new ColorResponse();
+            colorResponse.setIdColor(colorEntity.getId());
+            colorResponse.setNameColor(colorEntity.getName());
+
+            colorResponses.add(colorResponse);
+        }
+
+        return colorResponses;
+    }
 }

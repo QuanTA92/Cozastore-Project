@@ -1,5 +1,6 @@
 package com.cybersoft.cozastore.service;
 
+import com.cybersoft.cozastore.entity.RoleEntity;
 import com.cybersoft.cozastore.entity.UserEntity;
 import com.cybersoft.cozastore.payload.request.SignUpRequest;
 import com.cybersoft.cozastore.repository.UserRepository;
@@ -24,10 +25,14 @@ public class LoginService implements LoginServiceImp {
         boolean isSuccess = false;
 
         UserEntity user = new UserEntity();
+
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         user.setUsername(signUpRequest.getUserName());
 
+        RoleEntity userRole = new RoleEntity();
+        userRole.setId(2);
+        user.setRole(userRole);
         try {
             userRepository.save(user);
             isSuccess = true;

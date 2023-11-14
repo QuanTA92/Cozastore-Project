@@ -49,6 +49,23 @@ public class SizeService implements SizeServiceImp {
         }
     }
 
+    @Override
+    public List<SizeResponse> getAllSize() {
+        List<SizeEntity> sizeEntities = sizeRepository.findAll();
+        List<SizeResponse> sizeResponses = new ArrayList<>();
+
+        for (SizeEntity sizeEntity : sizeEntities){
+            SizeResponse sizeResponse = new SizeResponse();
+            sizeResponse.setIdSize(sizeEntity.getId());
+            sizeResponse.setNameSize(sizeEntity.getName());
+
+            sizeResponses.add(sizeResponse);
+
+        }
+        return sizeResponses;
+
+
+    }
 
 
 }

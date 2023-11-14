@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from preview.colorlib.com/theme/cozastore/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Mar 2023 02:47:05 GMT -->
 <head>
     <title>Product</title>
     <meta charset="UTF-8">
@@ -37,7 +36,7 @@
     <link href="css/main.css" rel="stylesheet" type="text/css">
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
 
 
     <script nonce="f17e8b15-03a7-41d0-9474-8746a8782ad9">
@@ -84,17 +83,12 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li>
-                            <a href="index-2.html">Home</a>
-                            <ul class="sub-menu">
-                                <li><a href="index-2.html">Homepage 1</a></li>
-                                <li><a href="home-02.html">Homepage 2</a></li>
-                                <li><a href="home-03.html">Homepage 3</a></li>
-                            </ul>
+                            <a href="index.html">Home</a>
                         </li>
-                        <li class="active-menu">
+                        <li>
                             <a href="product.html">Shop</a>
                         </li>
-                        <li class="label1" data-label1="hot">
+                        <li>
                             <a href="shoping-cart.html">Features</a>
                         </li>
                         <li>
@@ -113,15 +107,28 @@
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                         <i class="zmdi zmdi-search"></i>
                     </div>
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                         data-notify="2">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
-                    <a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0"
-                       href="#">
+
+                    <a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0" href="#">
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </a>
+
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 dropdown">
+                        <i class="zmdi zmdi-account" id="profileDropdown" data-toggle="dropdown"></i>
+                        <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <a class="dropdown-item" href="#"><span id="userEmail">Username: </span></a>
+                            <a class="dropdown-item" href="#">My Profile</a>
+                            <a class="dropdown-item" href="#">Order History</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </div>
                 </div>
+
+
+
             </nav>
         </div>
     </div>
@@ -209,9 +216,11 @@
 
     <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
         <div class="container-search-header">
+
             <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
                 <img alt="CLOSE" src="images/icons/icon-close2.png">
             </button>
+
             <form class="wrap-search-header flex-w p-l-15">
                 <button class="flex-c-m trans-04">
                     <i class="zmdi zmdi-search"></i>
@@ -220,6 +229,7 @@
             </form>
         </div>
     </div>
+
 </header>
 
 <div class="wrap-header-cart js-panel-cart">
@@ -296,14 +306,6 @@ Your Cart
 
             <div class="flex-w flex-c-m m-tb-10">
 
-                <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-insert">
-                    <a href="product-insert.html">
-                        <i class="fa-solid fa-plus cl2 m-r-6 fs-15 trans-04 zmdi zmdi-insert"></i>
-                        <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                        Insert Product
-                    </a>
-                </div>
-
                 <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
                     <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
                     <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
@@ -318,7 +320,6 @@ Your Cart
 
 
             </div>
-
 
 
             <div class="dis-none panel-search w-full p-t-10 p-b-15">
@@ -413,49 +414,49 @@ Your Cart
                         </div>
                         <ul>
                             <li class="p-b-6">
-<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-<i class="zmdi zmdi-circle"></i>
-</span>
+                                <span class="fs-15 lh-12 m-r-6" style="color: #222;">
+                                <i class="zmdi zmdi-circle"></i>
+                                </span>
                                 <a class="filter-link stext-106 trans-04" href="#">
                                     Black
                                 </a>
                             </li>
                             <li class="p-b-6">
-<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-<i class="zmdi zmdi-circle"></i>
-</span>
+                                <span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
+                                <i class="zmdi zmdi-circle"></i>
+                                </span>
                                 <a class="filter-link stext-106 trans-04 filter-link-active" href="#">
                                     Blue
                                 </a>
                             </li>
                             <li class="p-b-6">
-<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-<i class="zmdi zmdi-circle"></i>
-</span>
+                                <span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
+                                <i class="zmdi zmdi-circle"></i>
+                                </span>
                                 <a class="filter-link stext-106 trans-04" href="#">
                                     Grey
                                 </a>
                             </li>
                             <li class="p-b-6">
-<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-<i class="zmdi zmdi-circle"></i>
-</span>
+                                <span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
+                                <i class="zmdi zmdi-circle"></i>
+                                </span>
                                 <a class="filter-link stext-106 trans-04" href="#">
                                     Green
                                 </a>
                             </li>
                             <li class="p-b-6">
-<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-<i class="zmdi zmdi-circle"></i>
-</span>
+                                <span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
+                                <i class="zmdi zmdi-circle"></i>
+                                </span>
                                 <a class="filter-link stext-106 trans-04" href="#">
                                     Red
                                 </a>
                             </li>
                             <li class="p-b-6">
-<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-<i class="zmdi zmdi-circle-o"></i>
-</span>
+                                <span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
+                                <i class="zmdi zmdi-circle-o"></i>
+                                </span>
                                 <a class="filter-link stext-106 trans-04" href="#">
                                     White
                                 </a>
@@ -494,10 +495,6 @@ Your Cart
         </div>
 
         <div class="row isotope-grid" id="productList">
-
-            <!--            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item " id="productList">-->
-
-
         </div>
 
 
@@ -691,9 +688,7 @@ Your Cart
                         <h4 class="mtext-105 cl2 js-name-detail p-b-14">
                             Lightweight Jacket
                         </h4>
-                        <span class="mtext-106 cl2">
-$58.79
-</span>
+                        <span class="mtext-106 cl2"> $58.79</span>
                         <p class="stext-102 cl3 p-t-23">
                             Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare
                             feugiat.
@@ -784,13 +779,24 @@ $58.79
     </div>
 </div>
 
+<script>
+
+    // Giả sử bạn đã nhận được token JWT và đã lưu nó trong biến token.
+// Giải mã token để lấy thông tin người dùng
+const tokenData = jwtHelper.parserToken(token); // Sử dụng JwtHelper hoặc cách tương tự để giải mã token
+
+// Lấy email từ dữ liệu đã giải mã
+const userEmail = tokenData; // Thay "tokenData" bằng cách lấy email từ dữ liệu đã giải mã
+
+// Cập nhật nội dung của thẻ <span> với email của người dùng
+document.getElementById('userEmail').textContent = 'Username: ' + userEmail;
+
+
+</script>
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
 <script src="vendor/animsition/js/animsition.min.js"></script>
-
 <script src="vendor/bootstrap/js/popper.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
 <script src="vendor/select2/select2.min.js"></script>
 <script>
 		$(".js-select2").each(function(){
@@ -799,89 +805,18 @@ $58.79
 				dropdownParent: $(this).next('.dropDownSelect2')
 			});
 		})
-
-
-
-
 </script>
-
 <script src="vendor/daterangepicker/moment.min.js"></script>
 <script src="vendor/daterangepicker/daterangepicker.js"></script>
-
 <script src="vendor/slick/slick.min.js"></script>
 <script src="js/slick-custom.js"></script>
-
 <script src="vendor/parallax100/parallax100.js"></script>
 <script>
         $('.parallax100').parallax100();
-
-
-
-
 </script>
-
 <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-<script>
-		$('.gallery-lb').each(function() { // the containers for all your galleries
-			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
-		});
-
-
-
-
-</script>
-
 <script src="vendor/isotope/isotope.pkgd.min.js"></script>
-
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
-<script>
-		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
-			e.preventDefault();
-		});
-
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
-		});
-
-		$('.js-addwish-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-detail');
-				$(this).off('click');
-			});
-		});
-
-		/*---------------------------------------------*/
-
-		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-
-
-
-
-
-</script>
-
 <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
 		$('.js-pscroll').each(function(){
@@ -897,9 +832,6 @@ $58.79
 				ps.update();
 			})
 		});
-
-
-
 
 </script>
 
@@ -917,7 +849,12 @@ $58.79
 
   gtag('config', 'UA-23581568-13');
 
+
+
 </script>
+
+
+
 <script crossorigin="anonymous"
         data-cf-beacon='{"rayId":"7ae44daf7f7a0955","version":"2023.3.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}'
         defer

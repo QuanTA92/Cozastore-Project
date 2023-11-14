@@ -44,6 +44,17 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product")
     private List<CartEntity> carts;
 
+    @OneToMany(mappedBy = "product")
+    private List<ProductOrderEntity> productOrderEntities;
+
+    public List<ProductOrderEntity> getProductOrderEntities() {
+        return productOrderEntities;
+    }
+
+    public void setProductOrderEntities(List<ProductOrderEntity> productOrderEntities) {
+        this.productOrderEntities = productOrderEntities;
+    }
+
     public List<CartEntity> getCarts() {
         return carts;
     }

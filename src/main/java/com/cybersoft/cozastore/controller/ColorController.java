@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 @CrossOrigin
 @RestController
@@ -19,6 +19,7 @@ public class ColorController {
 
     @Autowired
     private ColorServiceImp colorServiceImp;
+
 
     @GetMapping("/{idColor}")
     public ResponseEntity<?> getColorNameById(@PathVariable int idColor){
@@ -53,6 +54,20 @@ public class ColorController {
         }
 
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
+    }
+
+
+    @GetMapping("")
+    public ResponseEntity<?> getAllColor(){
+        List<ColorResponse> colorResponses = colorServiceImp.getAllColor();
+
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setStatusCode(200);
+        baseResponse.setMessage("Get all color");
+        baseResponse.setData(colorResponses);
+
+        return new ResponseEntity<>(baseResponse,HttpStatus.OK);
+
     }
 
 }

@@ -1,9 +1,11 @@
 package com.cybersoft.cozastore.payload.request;
 
 public class CartRequest {
+
     private int idProduct;
     private int idUser;
     private int quanity;
+
 
     public int getIdProduct() {
         return idProduct;
