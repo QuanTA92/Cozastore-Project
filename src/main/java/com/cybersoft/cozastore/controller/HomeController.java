@@ -10,6 +10,6 @@ public class HomeController {
     @GetMapping("/hello")
     public String home() {
         System.out.println("Hello method call");
-        return "login";
+        return "index";
     }
 }

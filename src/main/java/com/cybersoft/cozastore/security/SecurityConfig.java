@@ -70,6 +70,8 @@ public class SecurityConfig {
                 .requestMatchers("/mail/**").permitAll()
                 .requestMatchers("/order/**").permitAll()
                 .requestMatchers("/hello/**").permitAll()
+                .requestMatchers("/product_order/**").permitAll()
+                .requestMatchers("/wishList/**").permitAll()
 
 
 

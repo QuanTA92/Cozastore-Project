@@ -9,11 +9,14 @@ import java.util.List;
 public interface CartServiceImp {
     boolean insertProductIntoCart(CartRequest cartRequest);
 
-    List<CartResponse> getCart(int idUser);
+    List<CartResponse> getCartByIdUser(int idUser);
+
+
     boolean deleteProductById(int idProduct);
 
     boolean deleteCartByIdUser(int idUser);
 
+    boolean deleteCartById(int id);
 
-
+    boolean updateCart(int id, int id_product, int quanity, int id_user);
 }
