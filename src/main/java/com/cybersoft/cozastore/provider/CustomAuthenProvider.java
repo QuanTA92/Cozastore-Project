@@ -1,7 +1,7 @@
-package com.cybersoft.cozastore.provider;
+package com.cybersoft.cozaStore.provider;
 
-import com.cybersoft.cozastore.entity.UserEntity;
-import com.cybersoft.cozastore.repository.UserRepository;
+import com.cybersoft.cozaStore.entity.UserEntity;
+import com.cybersoft.cozaStore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -13,10 +13,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Component
 public class CustomAuthenProvider implements AuthenticationProvider{
     @Autowired
@@ -36,7 +36,7 @@ public class CustomAuthenProvider implements AuthenticationProvider{
         if (username != null){
             // User tồn tại kiểm tra tiếp mật khẩu
             if (passwordEncoder.matches(password, user.getPassword())){
-                    // Tạo chứng thực --- GrantedAuthority một class chứng thực của SS
+                // Tạo chứng thực --- GrantedAuthority một class chứng thực của SS
                 List<GrantedAuthority> roles = new ArrayList<>();
                 GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(user.getRole().getName());
 

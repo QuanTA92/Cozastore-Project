@@ -1,4 +1,4 @@
-package com.cybersoft.cozastore.payload.request;
+package com.cybersoft.cozaStore.payload.request;
 
 public class CartRequest {
     private int idProduct;

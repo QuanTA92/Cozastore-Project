@@ -1,10 +1,10 @@
-package com.cybersoft.cozastore;
+package com.cybersoft.cozaStore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CozastoreApplicationTests {
+class CozaStoreApplicationTests {
 
 	@Test
 	void contextLoads() {

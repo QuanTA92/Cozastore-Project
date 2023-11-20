@@ -1,8 +1,13 @@
-package com.cybersoft.cozastore.payload.request;
+package com.cybersoft.cozaStore.payload.request;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import jakarta.persistence.Column;
+import jakarta.persistence.PrePersist;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
+
+import java.util.Date;
 
 public class SignUpRequest {
 
@@ -19,6 +24,32 @@ public class SignUpRequest {
     @NotBlank(message = "Email không được rỗng")
     @Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")
     private String email;
+
+    private String role;
+
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @PrePersist
+    protected void onCreate() {
+        createDate = new Date();
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     public String getUserName() {
         return userName;

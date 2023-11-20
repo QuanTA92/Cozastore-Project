@@ -1,6 +1,7 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +30,22 @@ public class ProductEntity {
     @Column(name = "create_date")
     private Date createDate;
 
+    @PrePersist
+    protected void onCreate() {
+        createDate = new Date();
+    }
+
+    @OneToMany(mappedBy = "product")
+    private List<WishListEntity> wishlists;
+
+    public List<WishListEntity> getWishlists() {
+        return wishlists;
+    }
+
+    public void setWishlists(List<WishListEntity> wishlists) {
+        this.wishlists = wishlists;
+    }
+
     @ManyToOne
     @JoinColumn(name = "id_category")
     private CategoryEntity category;
@@ -42,7 +59,20 @@ public class ProductEntity {
     private ColorEntity color;
 
     @OneToMany(mappedBy = "product")
+    private List<ProductOrderEntity> productOrders;
+
+    @OneToMany(mappedBy = "product")
     private List<CartEntity> carts;
+
+
+
+    public List<ProductOrderEntity> getProductOrders() {
+        return productOrders;
+    }
+
+    public void setProductOrders(List<ProductOrderEntity> productOrders) {
+        this.productOrders = productOrders;
+    }
 
     public List<CartEntity> getCarts() {
         return carts;

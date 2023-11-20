@@ -1,4 +1,5 @@
-package com.cybersoft.cozastore.service;
+package com.cybersoft.cozaStore.service;
 
 public class BlogService {
+
 }

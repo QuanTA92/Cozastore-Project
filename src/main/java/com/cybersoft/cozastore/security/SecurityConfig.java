@@ -1,19 +1,16 @@
-package com.cybersoft.cozastore.security;
+package com.cybersoft.cozaStore.security;
 
-
-import com.cybersoft.cozastore.filter.JwtFilter;
-import com.cybersoft.cozastore.provider.CustomAuthenProvider;
+import com.cybersoft.cozaStore.filter.JwtFilter;
+import com.cybersoft.cozaStore.provider.CustomAuthenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration // Class sẽ được quét khi spring boot chạy ở tầng config
 @EnableWebSecurity // Custom Spring Secutiry
@@ -57,18 +56,34 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
 
                 // các thằng dưới là con của thằng trên ----- Matchers là so sánh kiểm tra dữ liệu
-                .antMatchers("/login/**").permitAll() //permitALl() : nếu có .per thì link này ai gọi cũng được tất cả (ALL)
-                .antMatchers("/file/**").permitAll()
-                .antMatchers("/cart/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/product").hasRole("ADMIN") // link /product với phương thức POST phải có role ADMIN mới truy cập được
-                .antMatchers(HttpMethod.GET, "/product").permitAll()
-                .antMatchers(HttpMethod.PUT, "/product").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, "/cart").hasRole("USER")
+                .requestMatchers("/login/**").permitAll() //permitALl() : nếu có .per thì link này ai gọi cũng được tất cả (ALL)
+                .requestMatchers("/file/**").permitAll()
+                .requestMatchers("/cart/**").permitAll()
+                .requestMatchers("/product/**").permitAll()
+                .requestMatchers("/category/**").permitAll()
+                .requestMatchers("/home/**").permitAll()
+                .requestMatchers("/resources/**").permitAll()
+                .requestMatchers("/static/**").permitAll()
+                .requestMatchers("/templates/**").permitAll()
+                .requestMatchers("/role/**").permitAll()
+                .requestMatchers("/admin/**").permitAll()
+                .requestMatchers("/mail/**").permitAll()
+                .requestMatchers("/order/**").permitAll()
+                .requestMatchers("/hello/**").permitAll()
+                .requestMatchers("/product_order/**").permitAll()
+                .requestMatchers("/wishList/**").permitAll()
+
+
+
+                .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN") // link /product với phương thức POST phải có role ADMIN mới truy cập được
+                .requestMatchers(HttpMethod.GET, "/product").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/product").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/cart").hasRole("USER")
 
                 .anyRequest().authenticated() // Tất cả các link còn lại cần phải chứng thực
                 .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-}
 
+}

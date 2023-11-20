@@ -1,72 +1,65 @@
-package com.cybersoft.cozastore.filter;
+package com.cybersoft.cozaStore.filter;
 
-
-import com.cybersoft.cozastore.util.JwtHelper;
+import com.cybersoft.cozaStore.util.JwtHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.filter.OncePerRequestFilter;
+import io.jsonwebtoken.ExpiredJwtException;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-// dành cho việc giải mã token
-// Tạo filter để hứng token mỗi khi người dùng gọi request
-
-@Service //combonent cũng được
+@Component
+//OncePerRequestFilter : Có request yêu cầu chứng thực thì chạy vào filter
 public class JwtFilter extends OncePerRequestFilter {
 
+//    Bước 1 : Lấy token
+//    Bước 2 : Giải mã token
+//    Bước 3 : Token hợp lệ tạo chứng thực cho Security
+
     @Autowired
-    private JwtHelper jwtHelper;
-
-    private Gson gson = new Gson();
-
+    JwtHelper jwtHelper;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+//        Lấy giá trị trên header
+        String header = request.getHeader("Authorization");
 
-        // Lấy token mà client truyền trên header (authorization)
-        String headerValue = request.getHeader("Authorization");
-        if(headerValue != null && headerValue.startsWith("Bearer ")){
-
-            // Cắt chữ bearer để lấy token
-            String token = headerValue.substring(7);
-            jwtHelper.parserToken(token);
-            String data = jwtHelper.parserToken(token);
-            System.out.println("Kiem tra " + data);
-            if(data != null && !data.isEmpty()){
-                // Chứng thực hợp lệ, tạo chứng thực cho Security
-
-                Type listType = new TypeToken<ArrayList<SimpleGrantedAuthority>>(){}.getType();
-                List<SimpleGrantedAuthority> roles = gson.fromJson(data,listType);
-
-//                List<GrantedAuthority> roles = new ArrayList<>();
-//                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("ROLE_ADMIN");
-
-//                roles.add(roles);
-
-                UsernamePasswordAuthenticationToken user =
-                        new UsernamePasswordAuthenticationToken("","",roles);
-                SecurityContext context = SecurityContextHolder.getContext();
-                context.setAuthentication(user);
-
+//      Kiểm tra token lấy được xem có thể do hệ thống sinh ra hay không
+        try{
+            //        Cắt chuỗi bỏ chữ Bearer để lấy đúng token
+            String token = header.substring(7);
+            String data = jwtHelper.validToken(token);
+//            Nếu token khác rỗng tức là hợp lệ thì tạo chứng thực
+            if(!data.isEmpty()){
+//          Tạo chứng thực cho Security
+                UsernamePasswordAuthenticationToken authenticationToken =
+                        new UsernamePasswordAuthenticationToken("","",new ArrayList<>());
+                SecurityContext securityContext = SecurityContextHolder.getContext();
+                securityContext.setAuthentication(authenticationToken);
+//
             }
-        } else {
-            // không hợp lệ
-            System.out.println("Nội dung header không hợp lệ");
+            System.out.println("Kiem tra " + data);
+        }catch (Exception e){
+//            Token không hợp lệ
+            System.out.println("token không hợp lệ");
         }
 
-        filterChain.doFilter(request, response);
+//        Cho phép đi vào link người dùng muốn truy cập
+        filterChain.doFilter(request,response);
     }
+
 }

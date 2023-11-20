@@ -1,22 +1,21 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "cart")
 public class CartEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "quanity")
-    private int quanity;
-
     @ManyToOne
     @JoinColumn(name = "id_product")
     private ProductEntity product;
+
+    @Column(name = "quanity")
+    private int quanity;
 
     @OneToOne
     @JoinColumn(name = "id_user")
@@ -24,6 +23,11 @@ public class CartEntity {
 
     @Column(name = "create_date")
     private Date createDate;
+
+    @PrePersist
+    protected void onCreate() {
+        createDate = new Date();
+    }
 
     public int getId() {
         return id;
@@ -33,20 +37,20 @@ public class CartEntity {
         this.id = id;
     }
 
-    public int getQuanity() {
-        return quanity;
-    }
-
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
-    }
-
     public ProductEntity getProduct() {
         return product;
     }
 
     public void setProduct(ProductEntity product) {
         this.product = product;
+    }
+
+    public int getQuanity() {
+        return quanity;
+    }
+
+    public void setQuanity(int quanity) {
+        this.quanity = quanity;
     }
 
     public UserEntity getUser() {

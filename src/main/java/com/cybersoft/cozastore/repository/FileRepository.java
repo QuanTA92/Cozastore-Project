@@ -1,16 +1,10 @@
-package com.cybersoft.cozastore.repository;
+package com.cybersoft.cozaStore.repository;
 
-import com.cybersoft.cozastore.entity.FileEntity;
+import com.cybersoft.cozaStore.entity.FileEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository // đưa lên Bean
-public interface FileRepository extends JpaRepository<FileEntity, Integer> {
-
+@Repository
+public interface FileRepository extends JpaRepository <FileEntity, Integer>{
     FileEntity findByName(String fileName);
-
-
-
-
-
 }

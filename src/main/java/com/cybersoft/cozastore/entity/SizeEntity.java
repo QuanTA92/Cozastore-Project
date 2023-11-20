@@ -1,12 +1,12 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
 @Entity(name = "size")
 public class SizeEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,8 +17,14 @@ public class SizeEntity {
     @Column(name = "create_date")
     private Date createDate;
 
+    @PrePersist
+    protected void onCreate() {
+        createDate = new Date();
+    }
+
     @OneToMany(mappedBy = "size")
     private List<ProductEntity> products;
+
 
     public int getId() {
         return id;

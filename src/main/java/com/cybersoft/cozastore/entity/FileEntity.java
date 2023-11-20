@@ -1,10 +1,9 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity(name = "file")
 public class FileEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,6 +16,7 @@ public class FileEntity {
 
     @Column(name = "data")
     private byte[] data;
+
 
     public int getId() {
         return id;

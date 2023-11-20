@@ -10,9 +10,9 @@ $(document).ready(function () {
         console.log("server tra ve ", data);
 
         const element = document.getElementById("cartTable");
-        
+
         let htmlAdd = "";
-        
+
         const lengthData = data.data.length;
         for (let i = 0; i < lengthData; i++) {
             const product = data.data[i];
@@ -22,7 +22,7 @@ $(document).ready(function () {
             <tr class="table_row">
                 <td class="column-1">
                     <div class="how-itemcart1">
-                        <img src="images/item-cart-04.jpg" alt="IMG">
+                        <img src="../static/images/item-cart-04.jpg" alt="IMG">
                     </div>
                 </td>
                 <td class="column-2">${product.nameProduct}</td>

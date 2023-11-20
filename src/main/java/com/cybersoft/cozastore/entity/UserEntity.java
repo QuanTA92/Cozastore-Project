@@ -1,30 +1,80 @@
-package com.cybersoft.cozastore.entity;
+package com.cybersoft.cozaStore.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Date;
+import java.util.List;
 
-@Entity(name = "user")
+@Entity(name="user")
 public class UserEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "username")
+    @Column(name="username")
     private String username;
 
-    @Column(name = "password")
+    @Column(name="password")
     private String password;
 
-    @Column(name = "email")
+    @Column(name="email")
     private String email;
 
     @Column(name = "create_date")
     private Date createDate;
 
+    @PrePersist
+    protected void onCreate() {
+        createDate = new Date();
+    }
+
     @ManyToOne
     @JoinColumn(name = "id_role")
     private RoleEntity role;
+
+    @OneToMany(mappedBy = "user")
+    private List<BlogEntity> blogs;
+
+    @OneToMany(mappedBy = "user")
+    private List<OrderEntity> orders;
+
+    @OneToMany(mappedBy = "user")
+    private List<CartEntity> carts;
+
+    @OneToMany(mappedBy = "user")
+    private List<WishListEntity> wishlists;
+
+    public List<WishListEntity> getWishlists() {
+        return wishlists;
+    }
+
+    public void setWishlists(List<WishListEntity> wishlists) {
+        this.wishlists = wishlists;
+    }
+
+    public List<BlogEntity> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<BlogEntity> blogs) {
+        this.blogs = blogs;
+    }
+
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
+    }
+
+    public List<CartEntity> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<CartEntity> carts) {
+        this.carts = carts;
+    }
 
     public int getId() {
         return id;
