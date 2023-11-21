@@ -20,4 +20,4 @@ nhân viên
 Lưu ý : Sản phẩm được thêm hoặc được chỉnh sửa thì phải effect ở giao diện trang chủ.
 Chức năng thêm sẽ được điểm cộng:
 - Bình luận sản phẩm
-- Đánh giá sản phẩ
+- Đánh giá sản phẩm
