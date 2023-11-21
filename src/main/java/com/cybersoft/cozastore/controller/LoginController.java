@@ -52,6 +52,8 @@ public class LoginController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         List<SimpleGrantedAuthority> roles = (List<SimpleGrantedAuthority>) authentication.getAuthorities();
 
+        String userEmail = email;
+
         String jsonRole = gson.toJson(roles);
 
         String token = jwtHelper.generateToken(jsonRole);

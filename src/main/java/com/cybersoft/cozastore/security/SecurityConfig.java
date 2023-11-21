@@ -64,7 +64,11 @@ public class SecurityConfig {
                 .antMatchers("/color/**").permitAll()
                 .antMatchers("/category/**").permitAll()
                 .antMatchers("/role/**").permitAll()
+                .antMatchers("/status").permitAll()
+                .antMatchers(HttpMethod.POST, "/status").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
+                .antMatchers("/index").permitAll()
+                .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
 
                 .antMatchers("/product-order").permitAll()
                 .antMatchers("/user/**").permitAll()

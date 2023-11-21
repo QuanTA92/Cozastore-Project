@@ -7,11 +7,32 @@ public class ProductOrderResponse {
 
     private int idOrder;
 
+    private String nameUser;
+
     private int quantity;
 
     private double price;
 
+    private String statusOrder;
+
     private Date createDate;
+
+
+    public String getStatusOrder() {
+        return statusOrder;
+    }
+
+    public void setStatusOrder(String statusOrder) {
+        this.statusOrder = statusOrder;
+    }
+
+    public String getNameUser() {
+        return nameUser;
+    }
+
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
+    }
 
     public int getIdProduct() {
         return idProduct;

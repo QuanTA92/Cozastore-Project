@@ -12,6 +12,15 @@ public class ProductOrderRequest {
 
     private double price;
 
+    private int idUser;
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
     public int getIdProduct() {
         return idProduct;

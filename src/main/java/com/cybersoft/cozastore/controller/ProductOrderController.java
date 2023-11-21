@@ -30,7 +30,7 @@ public class ProductOrderController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> insertProductOrder(@RequestParam ProductOrderRequest productOrderRequest){
+    public ResponseEntity<?> insertProductOrder(@RequestBody ProductOrderRequest productOrderRequest){
         boolean isSuccess = productOrderServiceImp.insertProductOrder(productOrderRequest);
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setStatusCode(200);

@@ -13,12 +13,6 @@ public class ProductResponse {
 
     private String description;
 
-//    private int idSize;
-//
-//    private int idColor;
-//
-//    private int idCategory;
-
     private String nameSize;
 
     private String nameColor;
@@ -57,13 +51,6 @@ public class ProductResponse {
         this.quantity = quantity;
     }
 
-//    public int getIdCategory() {
-//        return idCategory;
-//    }
-//
-//    public void setIdCategory(int idCategory) {
-//        this.idCategory = idCategory;
-//    }
 
     public int getIdProduct() {
         return idProduct;
@@ -105,19 +92,4 @@ public class ProductResponse {
         this.description = description;
     }
 
-//    public int getIdSize() {
-//        return idSize;
-//    }
-//
-//    public void setIdSize(int idSize) {
-//        this.idSize = idSize;
-//    }
-//
-//    public int getIdColor() {
-//        return idColor;
-//    }
-//
-//    public void setIdColor(int idColor) {
-//        this.idColor = idColor;
-//    }
 }

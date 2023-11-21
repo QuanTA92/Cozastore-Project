@@ -19,7 +19,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,6 +76,10 @@ public class ProductService implements ProductServiceImp {
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setId(idCategory);
         productEntity.setCategory(categoryEntity);
+
+        LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh"));
+        Date createDate = Date.from(currentDateTime.atZone(ZoneId.of("Asia/Ho_Chi_Minh")).toInstant());
+        productEntity.setCreateDate(createDate);
 
         productRepository.save(productEntity);
 
