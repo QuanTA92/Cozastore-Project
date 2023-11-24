@@ -56,4 +56,17 @@ public class StatusService implements StatusServiceImp {
         }
 
     }
+
+    @Override
+    public boolean deleteStatusById(int idStatus) {
+        if (statusRepository.existsById(idStatus)) {
+
+            statusRepository.deleteById(idStatus);
+
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

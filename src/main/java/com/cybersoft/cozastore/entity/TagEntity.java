@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "category")
-public class CategoryEntity {
+@Entity(name = "tag")
+public class TagEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,19 +17,10 @@ public class CategoryEntity {
     @Column(name = "create_date")
     private Date createDate;
 
-    @OneToMany(mappedBy = "category")
-    private List<ProductEntity> products;
+    @OneToMany
+    @JoinColumn(name = "tag")
+    private List<BlogTagEntity> blogTagEntities;
 
-    @OneToMany(mappedBy = "categoryEntity")
-    private List<CategoryEntity> categoryEntity;
-
-    public List<CategoryEntity> getCategoryEntities() {
-        return categoryEntity;
-    }
-
-    public void setCategoryEntities(List<CategoryEntity> categoryEntities) {
-        this.categoryEntity = categoryEntities;
-    }
 
     public int getId() {
         return id;
@@ -55,11 +46,11 @@ public class CategoryEntity {
         this.createDate = createDate;
     }
 
-    public List<ProductEntity> getProducts() {
-        return products;
+    public List<BlogTagEntity> getBlogTagEntities() {
+        return blogTagEntities;
     }
 
-    public void setProducts(List<ProductEntity> products) {
-        this.products = products;
+    public void setBlogTagEntities(List<BlogTagEntity> blogTagEntities) {
+        this.blogTagEntities = blogTagEntities;
     }
 }

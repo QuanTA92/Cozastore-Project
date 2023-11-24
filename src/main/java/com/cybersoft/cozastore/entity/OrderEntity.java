@@ -1,6 +1,7 @@
 package com.cybersoft.cozastore.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity(name = "orders")
@@ -17,9 +18,19 @@ public class OrderEntity {
     @JoinColumn(name = "id_status")
     private StatusEntity status;
 
-    @OneToMany
-    @JoinColumn(name = "order")
+    @OneToMany(mappedBy = "order")
     private List<ProductOrderEntity> productOrderEntities;
+
+    @Column(name = "create_date")
+    private Date createDate;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     public List<ProductOrderEntity> getProductOrderEntities() {
         return productOrderEntities;

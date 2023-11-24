@@ -69,12 +69,15 @@ public class SecurityConfig {
                 .antMatchers("/**").permitAll()
                 .antMatchers("/index").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
-
+                .antMatchers("/blog").permitAll()
                 .antMatchers("/product-order").permitAll()
                 .antMatchers("/user/**").permitAll()
                 .antMatchers("/product/**").permitAll()
+                .antMatchers("/profile").permitAll()
+                .antMatchers("/order").permitAll()
 
-                 // link /product với phương thức POST phải có role ADMIN mới truy cập được
+
+                // link /product với phương thức POST phải có role ADMIN mới truy cập được
 
                 .antMatchers(HttpMethod.GET, "/cart").hasRole("USER")
 

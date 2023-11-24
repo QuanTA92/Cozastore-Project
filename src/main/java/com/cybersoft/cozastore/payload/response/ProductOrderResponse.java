@@ -3,7 +3,8 @@ package com.cybersoft.cozastore.payload.response;
 import java.util.Date;
 
 public class ProductOrderResponse {
-    private int idProduct;
+
+    private String nameProduct;
 
     private int idOrder;
 
@@ -17,6 +18,13 @@ public class ProductOrderResponse {
 
     private Date createDate;
 
+    public String getNameProduct() {
+        return nameProduct;
+    }
+
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
 
     public String getStatusOrder() {
         return statusOrder;
@@ -34,13 +42,8 @@ public class ProductOrderResponse {
         this.nameUser = nameUser;
     }
 
-    public int getIdProduct() {
-        return idProduct;
-    }
 
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
-    }
+
 
     public int getIdOrder() {
         return idOrder;

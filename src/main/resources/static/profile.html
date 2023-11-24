@@ -2,24 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
+    <!-- Thêm các tệp CSS hoặc các thư viện CSS cần thiết tại đây -->
 </head>
 <body>
-<h1>User Profile</h1>
-<p>Welcome, <span id="username"></span>!</p>
-</body>
+<div>
+    <h1>User Profile</h1>
+    <p id="username"></p>
+</div>
 
 <script>
-    // Lấy token từ localStorage
-    const token = localStorage.getItem('token');
+        // Lấy thông tin người dùng từ localStorage (hoặc từ nơi lưu trữ thông tin người dùng)
+        // Trong ví dụ này, giả sử thông tin người dùng được lưu trữ trong localStorage với key là "username"
+        var username = localStorage.getItem("username");
 
-    // Giải mã token (đặc biệt, lấy thông tin từ payload của token)
-    const tokenParts = token.split('.');
-    const payload = JSON.parse(atob(tokenParts[1]));
+        // Hiển thị tên người dùng lên trang HTML
+        document.getElementById("username").innerText = "Welcome, " + username;
+    </script>
 
-    // Hiển thị username lên trang
-    const usernameElement = document.getElementById('username');
-    usernameElement.textContent = payload.sub; // 'sub' là trường username trong payload
-</script>
-
+<!-- Thêm các tệp JavaScript hoặc các thư viện JavaScript cần thiết tại đây -->
+</body>
 </html>

@@ -11,6 +11,8 @@ public interface StatusServiceImp {
 
     boolean insertStatus(StatusRequest statusRequest);
 
+    boolean deleteStatusById(int idStatus);
+
 
 
 }

@@ -76,4 +76,9 @@ public class ProductOrderEntity {
     public void setOrder(OrderEntity order) {
         this.order = order;
     }
+
+    public ProductOrderEntity() {
+        this.keys = new ProductOrderKeys();
+    }
+
 }

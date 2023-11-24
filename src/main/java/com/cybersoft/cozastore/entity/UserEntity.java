@@ -2,6 +2,7 @@ package com.cybersoft.cozastore.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "user")
 public class UserEntity {
@@ -25,6 +26,18 @@ public class UserEntity {
     @ManyToOne
     @JoinColumn(name = "id_role")
     private RoleEntity role;
+
+    @OneToMany(mappedBy = "userEntity")
+    private List<BlogEntity> blogEntities;
+
+
+    public List<BlogEntity> getBlogEntities() {
+        return blogEntities;
+    }
+
+    public void setBlogEntities(List<BlogEntity> blogEntities) {
+        this.blogEntities = blogEntities;
+    }
 
     public int getId() {
 

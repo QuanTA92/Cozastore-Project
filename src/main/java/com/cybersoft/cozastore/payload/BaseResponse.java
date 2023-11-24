@@ -5,6 +5,16 @@ public class BaseResponse {
     private String message;
     private Object data;
 
+    private String error;
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
     public int getStatusCode() {
         return statusCode;
     }

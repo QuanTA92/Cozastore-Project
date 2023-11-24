@@ -4,15 +4,33 @@ import java.util.Date;
 
 public class ProductOrderRequest {
 
-    private int idProduct;
+    private int idCart;
 
-    private int idOrder;
+    private int idProduct;
 
     private int quantity;
 
     private double price;
 
     private int idUser;
+
+    private int idStatus;
+
+    public int getIdCart() {
+        return idCart;
+    }
+
+    public void setIdCart(int idCart) {
+        this.idCart = idCart;
+    }
+
+    public int getIdStatus() {
+        return idStatus;
+    }
+
+    public void setIdStatus(int idStatus) {
+        this.idStatus = idStatus;
+    }
 
     public int getIdUser() {
         return idUser;
@@ -30,13 +48,6 @@ public class ProductOrderRequest {
         this.idProduct = idProduct;
     }
 
-    public int getIdOrder() {
-        return idOrder;
-    }
-
-    public void setIdOrder(int idOrder) {
-        this.idOrder = idOrder;
-    }
 
     public int getQuantity() {
         return quantity;

@@ -1,12 +1,10 @@
 package com.cybersoft.cozastore.entity;
 
 import javax.persistence.*;
-import javax.swing.*;
 import java.util.Date;
-import java.util.List;
 
-@Entity(name = "blog")
-public class BlogEntity {
+@Entity(name ="carousel")
+public class CarouselEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,41 +13,18 @@ public class BlogEntity {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "image")
+    @Column(name= "image")
     private String image;
 
-    @Column(name = "content")
+    @Column(name= "content")
     private String content;
 
     @Column(name = "create_date")
     private Date createDate;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
-    private UserEntity userEntity;
-
-    @OneToMany(mappedBy = "blog")
-    private List<CommentEntity> commentEntities;
-
-    @OneToMany(mappedBy = "blog")
-    private List<BlogTagEntity> blogTagEntities;
-
-
-    public List<BlogTagEntity> getBlogTagEntities() {
-        return blogTagEntities;
-    }
-
-    public void setBlogTagEntities(List<BlogTagEntity> blogTagEntities) {
-        this.blogTagEntities = blogTagEntities;
-    }
-
-    public List<CommentEntity> getCommentEntities() {
-        return commentEntities;
-    }
-
-    public void setCommentEntities(List<CommentEntity> commentEntities) {
-        this.commentEntities = commentEntities;
-    }
+    @JoinColumn(name ="id_category")
+    private CategoryEntity categoryEntity;
 
     public int getId() {
         return id;
@@ -91,11 +66,11 @@ public class BlogEntity {
         this.createDate = createDate;
     }
 
-    public UserEntity getIdUser() {
-        return userEntity;
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
     }
 
-    public void setIdUser(UserEntity idUser) {
-        this.userEntity = idUser;
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 }

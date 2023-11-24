@@ -102,9 +102,6 @@ public class ProductService implements ProductServiceImp {
             productResponse.setPrice(productEntity.getPrice());
             productResponse.setDescription(productEntity.getDescription());
 
-//            productResponse.setIdSize(productEntity.getSize().getId());
-//            productResponse.setIdColor(productEntity.getColor().getId());
-//            productResponse.setIdCategory(productEntity.getCategory().getId());
 
             productResponse.setNameSize(productEntity.getSize().getName());
             productResponse.setNameColor(productEntity.getColor().getName());
@@ -140,9 +137,6 @@ public class ProductService implements ProductServiceImp {
                 productResponse.setQuantity(productEntity.getQuanity());
                 productResponse.setDescription(productEntity.getDescription());
 
-//                productResponse.setIdSize(productEntity.getSize().getId());
-//                productResponse.setIdColor(productEntity.getColor().getId());
-//                productResponse.setIdCategory(productEntity.getCategory().getId());
 
                 productResponse.setNameSize(productEntity.getSize().getName());
                 productResponse.setNameColor(productEntity.getColor().getName());
