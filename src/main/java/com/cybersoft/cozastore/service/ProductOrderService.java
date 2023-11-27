@@ -4,10 +4,8 @@ import com.cybersoft.cozastore.entity.*;
 import com.cybersoft.cozastore.entity.keys.ProductOrderKeys;
 import com.cybersoft.cozastore.payload.request.ProductOrderRequest;
 import com.cybersoft.cozastore.payload.response.ProductOrderResponse;
-import com.cybersoft.cozastore.repository.CartRepository;
-import com.cybersoft.cozastore.repository.OrderRepository;
-import com.cybersoft.cozastore.repository.ProductOrderRepository;
-import com.cybersoft.cozastore.repository.StatusRepository;
+import com.cybersoft.cozastore.payload.response.UserOrderHistoryResponse;
+import com.cybersoft.cozastore.repository.*;
 import com.cybersoft.cozastore.service.imp.ProductOrderServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +32,9 @@ public class ProductOrderService implements ProductOrderServiceImp {
     @Autowired
     private StatusRepository statusRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public boolean insertProductOrder(ProductOrderRequest productOrderRequest) throws IOException {
 
@@ -45,6 +46,7 @@ public class ProductOrderService implements ProductOrderServiceImp {
         }
 
         CartEntity cartEntity = optionalCartEntity.get();
+        ProductEntity productEntity = new ProductEntity();
 
         // Tạo mới ProductOrderEntity và OrderEntity
         ProductOrderEntity productOrderEntity = new ProductOrderEntity();
@@ -53,12 +55,13 @@ public class ProductOrderService implements ProductOrderServiceImp {
         // Thiết lập thông tin cho ProductOrderEntity
         productOrderEntity.getKeys().setIdProduct(cartEntity.getProduct().getId());
 
-        productOrderEntity.setQuanity(productOrderRequest.getQuantity());
+        productOrderEntity.setQuanity(cartEntity.getQuanity());
         productOrderEntity.setPrice(productOrderRequest.getPrice());
 
         // Thiết lập thông tin cho OrderEntity
         orderEntity.setUser(cartEntity.getUser());
-        orderEntity.setStatus(statusRepository.findById(productOrderRequest.getIdStatus()).orElse(null));
+
+        orderEntity.setStatus(statusRepository.findById(3).orElse(null));
 
         // Thiết lập createDate
         LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh"));
@@ -89,8 +92,6 @@ public class ProductOrderService implements ProductOrderServiceImp {
         for (ProductOrderEntity productOrderEntity : productOrderEntities){
 
             ProductOrderResponse productOrderResponse = new ProductOrderResponse();
-
-
             productOrderResponse.setNameProduct(productOrderEntity.getProduct().getName());
             productOrderResponse.setIdOrder(productOrderEntity.getOrder().getId());
             productOrderResponse.setNameUser(productOrderEntity.getOrder().getUser().getUsername());
@@ -104,6 +105,7 @@ public class ProductOrderService implements ProductOrderServiceImp {
 
         return productOrderResponses;
     }
+
 
 
 }

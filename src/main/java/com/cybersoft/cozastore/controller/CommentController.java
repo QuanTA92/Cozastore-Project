@@ -19,28 +19,37 @@ public class CommentController {
     private CommentServiceImp commentServiceImp;
 
     @PostMapping("")
-    public ResponseEntity<?> insertComment(@RequestParam String name, @RequestParam String email, @RequestParam String content, @RequestParam int idBlog){
-        CommentRequest commentRequest1 = new CommentRequest();
-        commentRequest1.setName(name);
-        commentRequest1.setEmail(email);
-        commentRequest1.setContent(content);
-        commentRequest1.setIdBlog(idBlog);
-
-        boolean isSuccess = commentServiceImp.insertComment(commentRequest1);
+    public ResponseEntity<?> insertComment(@RequestParam String name, @RequestParam String email,
+                                           @RequestParam String content, @RequestParam int idBlog){
+        CommentRequest commentRequest = new CommentRequest();
+        commentRequest.setName(name);
+        commentRequest.setEmail(email);
+        commentRequest.setContent(content);
+        commentRequest.setIdBlog(idBlog);
 
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setStatusCode(200);
 
-        if (isSuccess) {
-            baseResponse.setMessage("Add new comment successfully!");
-            baseResponse.setData(commentRequest1);
-        } else {
-            baseResponse.setMessage("Failed to comment color");
+        try {
+            boolean isSuccess = commentServiceImp.insertComment(commentRequest);
+
+            if (isSuccess) {
+                baseResponse.setStatusCode(200);
+                baseResponse.setMessage("Add new comment successfully!");
+                baseResponse.setData(commentRequest);
+            } else {
+                baseResponse.setStatusCode(500);
+                baseResponse.setMessage("Failed to comment");
+                baseResponse.setError("An error occurred while adding the comment");
+            }
+        } catch (Exception e) {
+            baseResponse.setStatusCode(500);
+            baseResponse.setMessage("Failed to comment");
+            baseResponse.setError(e.getMessage()); // Thêm thông tin chi tiết lỗi vào đây
         }
 
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
-
     }
+
 
     @GetMapping("/{idBlog}")
     public ResponseEntity<?> getCommentByIdBlog(@PathVariable int idBlog){

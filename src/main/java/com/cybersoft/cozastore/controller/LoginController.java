@@ -1,6 +1,7 @@
 package com.cybersoft.cozastore.controller;
 
 import com.cybersoft.cozastore.payload.BaseResponse;
+import com.cybersoft.cozastore.payload.BaseResponseToken;
 import com.cybersoft.cozastore.payload.request.SignUpRequest;
 import com.cybersoft.cozastore.service.imp.LoginServiceImp;
 import com.cybersoft.cozastore.util.JwtHelper;
@@ -54,15 +55,16 @@ public class LoginController {
 
         String userEmail = email;
 
+        int userId = loginServiceImp.getUserIdByEmail(userEmail);
         String jsonRole = gson.toJson(roles);
 
-        String token = jwtHelper.generateToken(jsonRole);
+        String token = jwtHelper.generateToken(jsonRole, userId);
 
-        BaseResponse baseResponse = new BaseResponse();
+        BaseResponseToken baseResponse = new BaseResponseToken();
         baseResponse.setStatusCode(200);
         baseResponse.setMessage("");
         baseResponse.setData(token);
-
+        baseResponse.setIdUser(userId);
 
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
@@ -78,5 +80,7 @@ public class LoginController {
 
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
-    
+
+
+
 }

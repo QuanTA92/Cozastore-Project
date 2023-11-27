@@ -1,45 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from preview.colorlib.com/theme/cozastore/blog-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Mar 2023 02:47:10 GMT -->
 <head>
     <title>Blog Detail</title>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-
-    <link href="images/icons/favicon.png" rel="icon" type="image/png"/>
-
+    <link href="images/icons/favicon.png" rel="icon" type="image/png" />
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
     <link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
     <link href="fonts/iconic/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css">
-
     <link href="fonts/linearicons-v1.0.0/icon-font.min.css" rel="stylesheet" type="text/css">
-
     <link href="vendor/animate/animate.css" rel="stylesheet" type="text/css">
-
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" type="text/css">
-
     <link href="vendor/animsition/css/animsition.min.css" rel="stylesheet" type="text/css">
-
     <link href="vendor/select2/select2.min.css" rel="stylesheet" type="text/css">
-
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css">
-
     <link href="css/util.css" rel="stylesheet" type="text/css">
     <link href="css/main.css" rel="stylesheet" type="text/css">
-
-    <script nonce="af10de94-3eec-4391-b5f4-c0de5374295c">
-        (function(w,d){!function(a,b,c,d){a[c]=a[c]||{};a[c].executed=[];a.zaraz={deferred:[],listeners:[]};a.zaraz.q=[];a.zaraz._f=function(e){return function(){var f=Array.prototype.slice.call(arguments);a.zaraz.q.push({m:e,a:f})}};for(const g of["track","set","debug"])a.zaraz[g]=a.zaraz._f(g);a.zaraz.init=()=>{var h=b.getElementsByTagName(d)[0],i=b.createElement(d),j=b.getElementsByTagName("title")[0];j&&(a[c].t=b.getElementsByTagName("title")[0].text);a[c].x=Math.random();a[c].w=a.screen.width;a[c].h=a.screen.height;a[c].j=a.innerHeight;a[c].e=a.innerWidth;a[c].l=a.location.href;a[c].r=b.referrer;a[c].k=a.screen.colorDepth;a[c].n=b.characterSet;a[c].o=(new Date).getTimezoneOffset();if(a.dataLayer)for(const n of Object.entries(Object.entries(dataLayer).reduce(((o,p)=>({...o[1],...p[1]})))))zaraz.set(n[0],n[1],{scope:"page"});a[c].q=[];for(;a.zaraz.q.length;){const q=a.zaraz.q.shift();a[c].q.push(q)}i.defer=!0;for(const r of[localStorage,sessionStorage])Object.keys(r||{}).filter((t=>t.startsWith("_zaraz_"))).forEach((s=>{try{a[c]["z_"+s.slice(7)]=JSON.parse(r.getItem(s))}catch{a[c]["z_"+s.slice(7)]=r.getItem(s)}}));i.referrerPolicy="origin";i.src="../../cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(a[c])));h.parentNode.insertBefore(i,h)};["complete","interactive"].includes(b.readyState)?zaraz.init():a.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);
-    </script>
 </head>
+
 <body class="animsition">
-
 <header class="header-v4">
-
     <div class="container-menu-desktop">
-
         <div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
                 <div class="left-top-bar">
@@ -67,24 +49,18 @@
                 <a class="logo" href="#">
                     <img alt="IMG-LOGO" src="images/icons/logo-01.png">
                 </a>
-
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li>
                             <a href="index.html">Home</a>
-                            <ul class="sub-menu">
-                                <li><a href="index-2.html">Homepage 1</a></li>
-                                <li><a href="home-02.html">Homepage 2</a></li>
-                                <li><a href="home-03.html">Homepage 3</a></li>
-                            </ul>
                         </li>
                         <li>
                             <a href="product.html">Shop</a>
                         </li>
-                        <li class="label1" data-label1="hot">
+                        <li>
                             <a href="shoping-cart.html">Features</a>
                         </li>
-                        <li class="active-menu">
+                        <li>
                             <a href="blog.html">Blog</a>
                         </li>
                         <li>
@@ -95,7 +71,6 @@
                         </li>
                     </ul>
                 </div>
-
                 <div class="wrap-icon-header flex-w flex-r-m">
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                         <i class="zmdi zmdi-search"></i>
@@ -104,21 +79,32 @@
                          data-notify="2">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
+
                     <a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0"
                        href="#">
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </a>
+
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 dropdown">
+                        <i class="zmdi zmdi-account" data-toggle="dropdown" id="profileDropdown"></i>
+                        <div aria-labelledby="profileDropdown" class="dropdown-menu">
+
+                            <a class="dropdown-item" id="profileData" href="#"></a>
+                            <a class="dropdown-item" href="#">My Profile</a>
+                            <a class="dropdown-item" href="#">Order History</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </div>
+
                 </div>
             </nav>
         </div>
     </div>
-
     <div class="wrap-header-mobile">
-
         <div class="logo-mobile">
             <a href="index-2.html"><img alt="IMG-LOGO" src="images/icons/logo-01.png"></a>
         </div>
-
         <div class="wrap-icon-header flex-w flex-r-m m-r-15">
             <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
                 <i class="zmdi zmdi-search"></i>
@@ -127,19 +113,17 @@
                  data-notify="2">
                 <i class="zmdi zmdi-shopping-cart"></i>
             </div>
-            <a class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0"
-               href="#">
+            <a class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+               data-notify="0" href="#">
                 <i class="zmdi zmdi-favorite-outline"></i>
             </a>
         </div>
-
         <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-<span class="hamburger-box">
-<span class="hamburger-inner"></span>
-</span>
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
         </div>
     </div>
-
     <div class="menu-mobile">
         <ul class="topbar-mobile">
             <li>
@@ -166,21 +150,13 @@
         </ul>
         <ul class="main-menu-m">
             <li>
-                <a href="index-2.html">Home</a>
-                <ul class="sub-menu-m">
-                    <li><a href="index-2.html">Homepage 1</a></li>
-                    <li><a href="home-02.html">Homepage 2</a></li>
-                    <li><a href="home-03.html">Homepage 3</a></li>
-                </ul>
-                <span class="arrow-main-menu-m">
-<i aria-hidden="true" class="fa fa-angle-right"></i>
-</span>
+                <a href="index.html">Home</a>
             </li>
             <li>
                 <a href="product.html">Shop</a>
             </li>
             <li>
-                <a class="label1 rs1" data-label1="hot" href="shoping-cart.html">Features</a>
+                <a href="shoping-cart.html">Features</a>
             </li>
             <li>
                 <a href="blog.html">Blog</a>
@@ -193,7 +169,6 @@
             </li>
         </ul>
     </div>
-
     <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
         <div class="container-search-header">
             <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
@@ -208,7 +183,6 @@
         </div>
     </div>
 </header>
-
 <div class="wrap-header-cart js-panel-cart">
     <div class="s-full js-hide-cart"></div>
     <div class="header-cart flex-col-l p-l-65 p-r-25">
@@ -220,67 +194,18 @@ Your Cart
                 <i class="zmdi zmdi-close"></i>
             </div>
         </div>
+
         <div class="header-cart-content flex-w js-pscroll">
-            <ul class="header-cart-wrapitem w-full">
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img alt="IMG" src="images/item-cart-01.jpg">
-                    </div>
-                    <div class="header-cart-item-txt p-t-8">
-                        <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
-                            White Shirt Pleat
-                        </a>
-                        <span class="header-cart-item-info">
-1 x $19.00
-</span>
-                    </div>
-                </li>
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img alt="IMG" src="images/item-cart-02.jpg">
-                    </div>
-                    <div class="header-cart-item-txt p-t-8">
-                        <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
-                            Converse All Star
-                        </a>
-                        <span class="header-cart-item-info">
-1 x $39.00
-</span>
-                    </div>
-                </li>
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img alt="IMG" src="images/item-cart-03.jpg">
-                    </div>
-                    <div class="header-cart-item-txt p-t-8">
-                        <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
-                            Nixon Porter Leather
-                        </a>
-                        <span class="header-cart-item-info">
-1 x $17.00
-</span>
-                    </div>
-                </li>
+            <ul class="header-cart-wrapitem w-full" id="cartData">
+                <!-- Danh sách sản phẩm trong giỏ hàng sẽ được thêm vào đây bằng JavaScript -->
             </ul>
-            <div class="w-full">
-                <div class="header-cart-total w-full p-tb-40">
-                    Total: $75.00
-                </div>
-                <div class="header-cart-buttons flex-w w-full">
-                    <a class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10"
-                       href="shoping-cart.html">
-                        View Cart
-                    </a>
-                    <a class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10"
-                       href="shoping-cart.html">
-                        Check Out
-                    </a>
-                </div>
-            </div>
+
+
         </div>
+
+
     </div>
 </div>
-
 <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a class="stext-109 cl8 hov-cl1 trans-04" href="index-2.html">
@@ -291,9 +216,7 @@ Your Cart
             Blog
             <i aria-hidden="true" class="fa fa-angle-right m-l-9 m-r-10"></i>
         </a>
-        <span class="stext-109 cl4">
-8 Inspiring Ways to Wear Dresses in the Winter
-</span>
+        <span class="stext-109 cl4" id="breadcrumbTitle"></span>
     </div>
 </div>
 
@@ -304,69 +227,31 @@ Your Cart
                 <div class="p-r-45 p-r-0-lg">
 
                     <div class="wrap-pic-w how-pos5-parent">
-                        <img alt="IMG-BLOG" src="images/blog-04.jpg">
+                        <img id="blogImage" alt="IMG-BLOG">
                         <div class="flex-col-c-m size-123 bg9 how-pos5">
-<span class="ltext-107 cl2 txt-center">
-22
-</span>
-                            <span class="stext-109 cl3 txt-center">
-Jan 2018
-</span>
+                            <span id="createDate" class="stext-109 cl3 txt-center"></span>
                         </div>
                     </div>
+
                     <div class="p-t-32">
-<span class="flex-w flex-m stext-111 cl2 p-b-19">
-<span>
-<span class="cl4">By</span> Admin
-<span class="cl12 m-l-4 m-r-6">|</span>
-</span>
-<span>
-22 Jan, 2018
-<span class="cl12 m-l-4 m-r-6">|</span>
-</span>
-<span>
-StreetStyle, Fashion, Couple
-<span class="cl12 m-l-4 m-r-6">|</span>
-</span>
-<span>
-8 Comments
-</span>
-</span>
-                        <h4 class="ltext-109 cl2 p-b-28">
-                            8 Inspiring Ways to Wear Dresses in the Winter
-                        </h4>
-                        <p class="stext-117 cl6 p-b-26">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet est vel orci luctus
-                            sollicitudin. Duis eleifend vestibulum justo, varius semper lacus condimentum dictum. Donec
-                            pulvinar a magna ut malesuada. In posuere felis diam, vel sodales metus accumsan in. Duis
-                            viverra dui eu pharetra pellentesque. Donec a eros leo. Quisque sed ligula vitae lorem
-                            efficitur faucibus. Praesent sit amet imperdiet ante. Nulla id tellus auctor, dictum libero
-                            a, malesuada nisi. Nulla in porta nibh, id vestibulum ipsum. Praesent dapibus tempus erat
-                            quis aliquet. Donec ac purus id sapien condimentum feugiat.
-                        </p>
-                        <p class="stext-117 cl6 p-b-26">
-                            Praesent vel mi bibendum, finibus leo ac, condimentum arcu. Pellentesque sem ex, tristique
-                            sit amet suscipit in, mattis imperdiet enim. Integer tempus justo nec velit fringilla, eget
-                            eleifend neque blandit. Sed tempor magna sed congue auctor. Mauris eu turpis eget tortor
-                            ultricies elementum. Phasellus vel placerat orci, a venenatis justo. Phasellus faucibus
-                            venenatis nisl vitae vestibulum. Praesent id nibh arcu. Vivamus sagittis accumsan felis,
-                            quis vulputate
-                        </p>
+                        <span id="authorDetails" class="flex-w flex-m stext-111 cl2 p-b-19"></span>
+                        <h4 id="blogTitle" class="ltext-109 cl2 p-b-28"></h4>
+                        <p id="blogContent" class="stext-117 cl6 p-b-26"></p>
                     </div>
+
                     <div class="flex-w flex-t p-t-16">
-<span class="size-216 stext-116 cl8 p-t-4">
-Tags
-</span>
-                        <div class="flex-w size-217">
-                            <a class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
-                               href="#">
-                                Streetstyle
-                            </a>
-                            <a class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
-                               href="#">
-                                Crafts
-                            </a>
+                        <span class="size-216 stext-116 cl8 p-t-4">Tags</span>
+                        <div id="tagContainer" class="flex-w size-217"></div>
+                    </div>
+
+                    <div class="p-t-40">
+                        <h5 class="mtext-113 cl2 p-b-12">
+                            Comment
+                        </h5>
+                        <div id="commentContainer">
+                            <!-- Dữ liệu comment sẽ được hiển thị ở đây -->
                         </div>
+
                     </div>
 
                     <div class="p-t-40">
@@ -376,28 +261,30 @@ Tags
                         <p class="stext-107 cl6 p-b-40">
                             Your email address will not be published. Required fields are marked *
                         </p>
-                        <form>
+                        <!-- Thêm một phần tử để hiển thị idBlog -->
+                        <div id="currentBlogIdContainer" style="display: none;">
+                            <strong>Current Blog ID:</strong> <span id="currentBlogId"></span>
+                        </div>
+                        <form id="commentForm">
                             <div class="bor19 m-b-20">
-                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt"
-                                          placeholder="Comment..."></textarea>
+                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="content" placeholder="Comment..."></textarea>
                             </div>
                             <div class="bor19 size-218 m-b-20">
-                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" name="name" placeholder="Name *"
-                                       type="text">
+                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" name="name" placeholder="Name *" type="text">
                             </div>
                             <div class="bor19 size-218 m-b-20">
-                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" name="email" placeholder="Email *"
-                                       type="text">
+                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" name="email" placeholder="Email *" type="text">
                             </div>
-                            <div class="bor19 size-218 m-b-30">
-                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" name="web" placeholder="Website"
-                                       type="text">
-                            </div>
-                            <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+
+                            <!-- Thêm trường input ẩn để giữ giá trị idBlog -->
+                            <input type="hidden" name="idBlog" id="idBlog" value="">
+
+                            <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" onclick="postComment()">
                                 Post Comment
                             </button>
                         </form>
                     </div>
+
                 </div>
             </div>
             <div class="col-md-4 col-lg-3 p-b-80">
@@ -455,8 +342,8 @@ Tags
                                         White Shirt With Pleat Detail Back
                                     </a>
                                     <span class="stext-116 cl6 p-t-20">
-$19.00
-</span>
+                                            $19.00
+                                        </span>
                                 </div>
                             </li>
                             <li class="flex-w flex-t p-b-30">
@@ -468,8 +355,8 @@ $19.00
                                         Converse All Star Hi Black Canvas
                                     </a>
                                     <span class="stext-116 cl6 p-t-20">
-$39.00
-</span>
+                                            $39.00
+                                        </span>
                                 </div>
                             </li>
                             <li class="flex-w flex-t p-b-30">
@@ -481,8 +368,8 @@ $39.00
                                         Nixon Porter Leather Watch In Tan
                                     </a>
                                     <span class="stext-116 cl6 p-t-20">
-$17.00
-</span>
+                                            $17.00
+                                        </span>
                                 </div>
                             </li>
                         </ul>
@@ -494,82 +381,82 @@ $17.00
                         <ul>
                             <li class="p-b-7">
                                 <a class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2" href="#">
-<span>
-July 2018
-</span>
+                                        <span>
+                                            July 2018
+                                        </span>
                                     <span>
-(9)
-</span>
+                                            (9)
+                                        </span>
                                 </a>
                             </li>
                             <li class="p-b-7">
                                 <a class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2" href="#">
-<span>
-June 2018
-</span>
+                                        <span>
+                                            June 2018
+                                        </span>
                                     <span>
-(39)
-</span>
+                                            (39)
+                                        </span>
                                 </a>
                             </li>
                             <li class="p-b-7">
                                 <a class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2" href="#">
-<span>
-May 2018
-</span>
+                                        <span>
+                                            May 2018
+                                        </span>
                                     <span>
-(29)
-</span>
+                                            (29)
+                                        </span>
                                 </a>
                             </li>
                             <li class="p-b-7">
                                 <a class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2" href="#">
-<span>
-April 2018
-</span>
+                                        <span>
+                                            April 2018
+                                        </span>
                                     <span>
-(35)
-</span>
+                                            (35)
+                                        </span>
                                 </a>
                             </li>
                             <li class="p-b-7">
                                 <a class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2" href="#">
-<span>
-March 2018
-</span>
+                                        <span>
+                                            March 2018
+                                        </span>
                                     <span>
-(22)
-</span>
+                                            (22)
+                                        </span>
                                 </a>
                             </li>
                             <li class="p-b-7">
                                 <a class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2" href="#">
-<span>
-February 2018
-</span>
+                                        <span>
+                                            February 2018
+                                        </span>
                                     <span>
-(32)
-</span>
+                                            (32)
+                                        </span>
                                 </a>
                             </li>
                             <li class="p-b-7">
                                 <a class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2" href="#">
-<span>
-January 2018
-</span>
+                                        <span>
+                                            January 2018
+                                        </span>
                                     <span>
-(21)
-</span>
+                                            (21)
+                                        </span>
                                 </a>
                             </li>
                             <li class="p-b-7">
                                 <a class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2" href="#">
-<span>
-December 2017
-</span>
+                                        <span>
+                                            December 2017
+                                        </span>
                                     <span>
-(26)
-</span>
+                                            (26)
+                                        </span>
                                 </a>
                             </li>
                         </ul>
@@ -669,7 +556,8 @@ December 2017
                     GET IN TOUCH
                 </h4>
                 <p class="stext-107 cl7 size-201">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
+                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
+                    on
                     (+1) 96 716 6879
                 </p>
                 <div class="p-t-27">
@@ -690,8 +578,8 @@ December 2017
                 </h4>
                 <form>
                     <div class="wrap-input1 w-full p-b-4">
-                        <input class="input1 bg-none plh1 stext-107 cl7" name="email" placeholder="email@example.com"
-                               type="text">
+                        <input class="input1 bg-none plh1 stext-107 cl7" name="email"
+                               placeholder="email@example.com" type="text">
                         <div class="focus-input1 trans-04"></div>
                     </div>
                     <div class="p-t-18">
@@ -721,76 +609,373 @@ December 2017
                 </a>
             </div>
             <p class="stext-107 cl6 txt-center">
-
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                All rights reserved | This template is made with <i aria-hidden="true" class="fa fa-heart-o"></i> by <a
-                    href="https://colorlib.com/" target="_blank">Colorlib</a>
-
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script>
+                All rights reserved | This template is made with <i aria-hidden="true" class="fa fa-heart-o"></i> by
+                <a href="https://colorlib.com/" target="_blank">Colorlib</a>
             </p>
         </div>
     </div>
 </footer>
-
 <div class="btn-back-to-top" id="myBtn">
-<span class="symbol-btn-back-to-top">
-<i class="zmdi zmdi-chevron-up"></i>
-</span>
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
 </div>
-
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
 <script src="vendor/animsition/js/animsition.min.js"></script>
-
 <script src="vendor/bootstrap/js/popper.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
 <script src="vendor/select2/select2.min.js"></script>
 <script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-
-</script>
-
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
 <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-
 <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
-				scrollingThreshold: 1000,
-				wheelPropagation: false,
-			});
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
 
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
-
-</script>
-
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
 <script src="js/main.js"></script>
-
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'UA-23581568-13');
-
-</script>
-<script crossorigin="anonymous" data-cf-beacon='{"rayId":"7ae44e675ce80955","version":"2023.3.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}'
+        gtag('config', 'UA-23581568-13');
+    </script>
+<script crossorigin="anonymous"
+        data-cf-beacon='{"rayId":"7ae44e675ce80955","version":"2023.3.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}'
         defer
         integrity="sha512-M3hN/6cva/SjwrOtyXeUa5IuCT0sedyfT+jK/OV+s+D0RnzrTfwjwJHhd+wYfMm9HJSrZ1IKksOdddLuN6KOzw=="
         src="https://static.cloudflareinsights.com/beacon.min.js/vb26e4fa9e5134444860be286fd8771851679335129114"></script>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy idBlog từ URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const idBlog = urlParams.get('idBlog');
+
+            // Gửi yêu cầu lấy dữ liệu từ máy chủ cho blog cụ thể
+            fetch(`http://localhost:8080/blog/${idBlog}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Kiểm tra xem có dữ liệu trả về không
+                    if (data.data && data.data.length > 0) {
+                        const blog = data.data[0];
+
+                        // Hiển thị thông tin chi tiết của blog
+                        document.getElementById('breadcrumbTitle').textContent = blog.title;
+                        document.getElementById('blogImage').src = `http://localhost:8080/images/${blog.image}`;
+                        document.getElementById('createDate').textContent = blog.createDate;
+                        document.getElementById('authorDetails').innerHTML = `
+                            <span>
+                                <span class="cl4">By</span> ${blog.nameUser}
+                                <span class="cl12 m-l-4 m-r-6">|</span>
+                            </span>
+                            <span>${blog.createDate}</span>
+                            <span class="cl12 m-l-4 m-r-6">|</span>
+                            <span>${parseNameTag(blog.nameTag)}</span>
+                            <span class="cl12 m-l-4 m-r-6">|</span>
+                            <span><!-- Số lượng comment của bài viết --></span>
+                        `;
+                        document.getElementById('blogTitle').textContent = blog.title;
+                        document.getElementById('blogContent').textContent = blog.content;
+
+                        // Hiển thị các tag
+                        const tagContainer = document.getElementById('tagContainer');
+                        displayTags(parseNameTag(blog.nameTag));
+                    } else {
+                        // Hiển thị thông báo khi không tìm thấy blog
+                        document.getElementById('blogDetailContainer').innerHTML = '<p>Blog not found</p>';
+                    }
+                })
+                .catch(error => console.error('Lỗi khi lấy dữ liệu:', error));
+        });
+
+        function parseNameTag(nameTag) {
+    try {
+        // Loại bỏ cặp dấu ngoặc vuông [] và chuyển đổi chuỗi thành mảng
+        const tagsArray = nameTag.replace(/^\[|\]$/g, '').split(',');
+
+        // Loại bỏ các khoảng trắng không mong muốn từ các tag
+        const trimmedTags = tagsArray.map(tag => tag.trim());
+
+        return trimmedTags;
+    } catch (error) {
+        console.error('Lỗi khi phân tích cú pháp nameTag:', error);
+        return [];
+    }
+}
+
+
+
+        // Hàm để hiển thị các tag
+        function displayTags(tags) {
+            const tagContainer = document.getElementById('tagContainer');
+
+            tags.forEach(tag => {
+                const tagElement = document.createElement('a');
+                tagElement.className = 'flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5';
+                tagElement.href = '#';
+                tagElement.textContent = tag;
+
+                tagContainer.appendChild(tagElement);
+            });
+        }
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get idBlog from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const idBlog = urlParams.get('idBlog');
+
+        // Fetch comment data from the server
+        fetch(`http://localhost:8080/comment/${idBlog}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update HTML content with the received data
+                const commentContainer = document.getElementById('commentContainer');
+
+                // Check if there is data returned
+                if (data.data && data.data.length > 0) {
+                    data.data.forEach(comment => {
+                        const commentHTML = `
+                            <div class="border p-3 mb-3 bg-white rounded">
+                                <p><strong>Name:</strong> ${comment.name}</p>
+<!--                                <p><strong>Email:</strong> ${comment.email}</p>-->
+                                <p><strong>Comment:</strong> ${comment.content}</p>
+                            </div>
+                        `;
+                        commentContainer.innerHTML += commentHTML;
+                    });
+                } else {
+                    commentContainer.innerHTML = '<p></p>';
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy giá trị idBlog từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const idBlog = urlParams.get('idBlog');
+
+        // Kiểm tra xem idBlog có giá trị không null
+        if (idBlog !== null) {
+            // Đặt giá trị idBlog vào trường input ẩn và hiển thị trong phần tử HTML
+            document.getElementById('idBlog').value = idBlog;
+            document.getElementById('currentBlogId').textContent = idBlog;
+        } else {
+            console.error('idBlog is null. Please provide a valid idBlog in the URL.');
+        }
+    });
+
+    function postComment() {
+        const commentForm = document.getElementById('commentForm');
+        const formData = new FormData(commentForm);
+
+        // Lấy giá trị idBlog từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const idBlog = urlParams.get('idBlog');
+
+        // Kiểm tra xem idBlog có giá trị không null
+        if (idBlog !== null) {
+            // Đặt giá trị idBlog vào trường input ẩn và hiển thị trong phần tử HTML
+            document.getElementById('idBlog').value = idBlog;
+            document.getElementById('currentBlogId').textContent = idBlog;
+
+            // Thêm giá trị idBlog vào FormData
+            formData.append('idBlog', idBlog);
+
+            fetch('http://localhost:8080/comment', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // Xử lý kết quả từ server
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        } else {
+            console.error('idBlog is null. Please provide a valid idBlog in the URL.');
+        }
+    }
+</script>
+
+
+
+<script>
+        $(document).ready(function() {
+            // Lấy token từ Local Storage
+            var token = localStorage.getItem("token");
+            // Kiểm tra xem token có tồn tại không
+            if (token) {
+                // Gửi token đến endpoint /user/decode-token để giải mã
+                $.ajax({
+                    url: "http://localhost:8080/user/decode-token",
+                    method: "post",
+                    data: {
+                        token: token
+                    }
+                }).done(function(data) {
+                    // Kiểm tra dữ liệu trả về
+                    if (data && data.userId) {
+                        // Hiển thị id người dùng
+                        $("#profileData").html("User ID: " + data.userId);
+                    } else {
+                        $("#profileData").html("Failed to get user ID");
+                    }
+                }).fail(function() {
+                    $("#profileData").html("Failed to decode token");
+                });
+            } else {
+                $("#profileData").html("Token not found in Local Storage");
+            }
+        });
+    </script>
+
+
+<script>
+        $(document).ready(function() {
+            // Lấy token từ Local Storage
+            var token = localStorage.getItem("token");
+
+            // Kiểm tra xem token có tồn tại không
+            if (token) {
+                // Gửi token đến endpoint /user/decode-token để giải mã
+                $.ajax({
+                    url: "http://localhost:8080/user/decode-token",
+                    method: "post",
+                    data: {
+                        token: token
+                    }
+                }).done(function(data) {
+                    // Kiểm tra dữ liệu trả về
+                    if (data && data.userId) {
+                        // Gửi request để lấy giỏ hàng của người dùng
+                        $.ajax({
+                            url: "http://localhost:8080/cart/" + data.userId,
+                            method: "get"
+                        }).done(function(cartData) {
+                            // Kiểm tra dữ liệu giỏ hàng trả về
+                            if (cartData && cartData.data) {
+                                // Hiển thị thông tin giỏ hàng
+                                displayCart(cartData.data);
+                            } else {
+                                $("#cartData").html("Failed to get cart data");
+                            }
+                        }).fail(function() {
+                            $("#cartData").html("Failed to get cart data");
+                        });
+                    } else {
+                        $("#cartData").html("Failed to get user ID");
+                    }
+                }).fail(function() {
+                    $("#cartData").html("Failed to decode token");
+                });
+            } else {
+                $("#cartData").html("Token not found in Local Storage");
+            }
+            // Hàm hiển thị thông tin giỏ hàng
+        function displayCart(cartData) {
+            var cartHtml = "<div class='header-cart-content flex-w js-pscroll'>";
+            cartHtml += "<ul class='header-cart-wrapitem w-full'>";
+            // Lặp qua danh sách sản phẩm trong giỏ hàng
+            for (var i = 0; i < cartData.length; i++) {
+                var product = cartData[i];
+                cartHtml += "<li class='header-cart-item flex-w flex-t m-b-12'>";
+                cartHtml += "<div class='header-cart-item-img'>";
+                cartHtml += "<img alt='IMG' src='images/" + product.imageProduct + "'>";
+                cartHtml += "</div>";
+                cartHtml += "<div class='header-cart-item-txt p-t-8'>";
+                cartHtml += "<a class='header-cart-item-name m-b-18 hov-cl1 trans-04' href='#'>";
+                cartHtml += product.nameProduct;
+                cartHtml += "</a>";
+                cartHtml += "<span class='header-cart-item-info'>" + product.quanity + " x $" + product.price + "</span>";
+
+                // Thêm button xóa với sự kiện onclick để gọi hàm xóa
+                cartHtml += "<button class='btn-delete' data-id='" + product.cart + "'>Delete</button>";
+
+                cartHtml += "</div>";
+                cartHtml += "</li>";
+            }
+            cartHtml += "</ul>";
+            cartHtml += "<div class='w-full'>";
+            cartHtml += "<div class='header-cart-total w-full p-tb-40'>";
+            // Tính tổng giá trị giỏ hàng
+            var total = 0;
+            for (var i = 0; i < cartData.length; i++) {
+                total += cartData[i].quanity * cartData[i].price;
+            }
+            cartHtml += "Total: $" + total.toFixed(2);
+            cartHtml += "</div>";
+            cartHtml += "<div class='header-cart-buttons flex-w w-full'>";
+            cartHtml += "<a class='flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10' href='cart.html'>";
+            cartHtml += "View Cart";
+            cartHtml += "</a>";
+            cartHtml += "<a class='flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10' href='cart.html'>";
+            cartHtml += "Check Out";
+            cartHtml += "</a>";
+            cartHtml += "</div>";
+            cartHtml += "</div>";
+            cartHtml += "</div>";
+
+            // Hiển thị HTML của giỏ hàng
+            $("#cartData").html(cartHtml);
+
+            // Gắn sự kiện cho button xóa
+            $(".btn-delete").on("click", function() {
+                var cartId = $(this).data("id");
+                // Gửi request để xóa sản phẩm từ giỏ hàng
+                $.ajax({
+                    url: "http://localhost:8080/cart/" + cartId,
+                    method: "delete"
+                }).done(function(response) {
+                    if (response && response.statusCode === 200) {
+                        // Nếu xóa thành công, cập nhật lại giỏ hàng
+                        displayCart(cartData.filter(function(product) {
+                            return product.cart !== cartId;
+                        }));
+                    } else {
+                        alert("Failed to delete item from cart");
+                    }
+                }).fail(function() {
+                    alert("Failed to delete item from cart");
+                });
+            });
+        }
+    });
+</script>
+
+
+
+
+
+
 </body>
 
-<!-- Mirrored from preview.colorlib.com/theme/cozastore/blog-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Mar 2023 02:47:10 GMT -->
 </html>

@@ -27,7 +27,7 @@ public class CartController {
 
         List<CartResponse> cartResponseList = cartServiceImp.getCart(idUser);
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setMessage("Get cart info by user id");
+        baseResponse.setMessage("Get cart info by user id ");
         baseResponse.setData(cartResponseList);
         baseResponse.setStatusCode(200);
 
@@ -38,8 +38,8 @@ public class CartController {
     public ResponseEntity<?> insertProductIntoCart(@RequestBody CartRequest cartRequest){
         boolean isSuccess = cartServiceImp.insertProductIntoCart(cartRequest);
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setData(isSuccess ? "Insert Successfully" : "Insert Failed");
-        baseResponse.setMessage("Insert Product Into Cart");
+        baseResponse.setData(cartRequest);
+        baseResponse.setMessage(isSuccess ? "Insert Successfully" : "Insert Failed");
         baseResponse.setStatusCode(200);
 
         return new ResponseEntity<BaseResponse>(baseResponse, HttpStatus.OK);

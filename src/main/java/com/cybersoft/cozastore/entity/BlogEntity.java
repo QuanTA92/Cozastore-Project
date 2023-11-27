@@ -34,6 +34,13 @@ public class BlogEntity {
     @OneToMany(mappedBy = "blog")
     private List<BlogTagEntity> blogTagEntities;
 
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
 
     public List<BlogTagEntity> getBlogTagEntities() {
         return blogTagEntities;

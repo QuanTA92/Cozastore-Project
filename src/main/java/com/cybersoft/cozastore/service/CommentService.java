@@ -14,16 +14,20 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class CommentService implements CommentServiceImp {
+
+    private static final Logger logger = LoggerFactory.getLogger(CommentService.class);
 
     @Autowired
     private CommentRepository commentRepository;
 
     @Override
     public boolean insertComment(CommentRequest commentRequest) {
-
+        try {
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setName(commentRequest.getName());
         commentEntity.setEmail(commentRequest.getEmail());
@@ -39,8 +43,12 @@ public class CommentService implements CommentServiceImp {
         commentEntity.setCreateDate(createDate);
 
         commentRepository.save(commentEntity);
-
-        return false;
+            return true; // Trả về true khi không có lỗi
+        } catch (Exception e) {
+            // Ghi log lỗi, có thể sử dụng một thư viện logging như SLF4J
+            logger.error("Error occurred while adding the comment", e);
+            return false; // Trả về false để thông báo rằng có lỗi xảy ra
+        }
     }
 
     @Override

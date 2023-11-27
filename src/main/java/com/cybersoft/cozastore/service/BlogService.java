@@ -2,11 +2,8 @@ package com.cybersoft.cozastore.service;
 
 import com.cybersoft.cozastore.entity.*;
 import com.cybersoft.cozastore.entity.keys.BlogTagKeys;
-import com.cybersoft.cozastore.payload.request.BlogRequest;
-import com.cybersoft.cozastore.repository.BlogRepository;
-import com.cybersoft.cozastore.repository.BlogTagRepository;
-import com.cybersoft.cozastore.repository.TagRepository;
-import com.cybersoft.cozastore.repository.UserRepository;
+import com.cybersoft.cozastore.payload.response.BlogResponse;
+import com.cybersoft.cozastore.repository.*;
 import com.cybersoft.cozastore.service.imp.BlogServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +17,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class BlogService implements BlogServiceImp {
@@ -39,6 +38,9 @@ public class BlogService implements BlogServiceImp {
 
     @Autowired
     private BlogTagRepository blogTagRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     @Override
     public boolean insertBlog(String title, MultipartFile file, String content, int idUser, String nameTag) throws IOException {
@@ -90,5 +92,80 @@ public class BlogService implements BlogServiceImp {
 
         return true;
     }
+
+    @Override
+    public List<BlogResponse> getAllBlog() {
+
+        List<BlogEntity> blogEntities = blogRepository.findAll();
+
+        List<BlogResponse> blogResponses = new ArrayList<>();
+        for (BlogEntity blogEntity : blogEntities) {
+            BlogResponse blogResponse = new BlogResponse();
+            List<String> nameTags = new ArrayList<>();
+
+            // Lấy danh sách các BlogTagEntity liên quan đến BlogEntity
+            List<BlogTagEntity> blogTagEntities = blogTagRepository.findByBlog(blogEntity);
+
+            for (BlogTagEntity blogTagEntity : blogTagEntities) {
+                // Lấy thông tin TagEntity từ BlogTagEntity
+                TagEntity tagEntity = blogTagEntity.getTag();
+                if (tagEntity != null) {
+                    // Thêm tên tag vào danh sách
+                    nameTags.add(tagEntity.getName());
+                }
+            }
+
+            // Thiết lập thông tin cho BlogResponse
+            blogResponse.setIdBlog(blogEntity.getId());
+            blogResponse.setTitle(blogEntity.getTitle());
+            blogResponse.setImage(blogEntity.getImage());
+            blogResponse.setContent(blogEntity.getContent());
+            blogResponse.setNameUser(blogEntity.getIdUser().getUsername());
+            blogResponse.setCreateDate(String.valueOf(blogEntity.getCreateDate()));
+            blogResponse.setNameTag(nameTags.toString()); // Đặt danh sách nameTags vào BlogResponse
+            blogResponses.add(blogResponse);
+        }
+
+        return blogResponses;
+    }
+
+    @Override
+    public List<BlogResponse> getBlogDetailsByIdBlog(int idBlog) {
+
+        List<BlogEntity> blogEntities = blogRepository.findAll();
+
+        List<BlogResponse> blogResponses = new ArrayList<>();
+        for (BlogEntity blogEntity : blogEntities) {
+            if (blogEntity.getId() == idBlog) {
+                BlogResponse blogResponse = new BlogResponse();
+                List<String> nameTags = new ArrayList<>();
+
+                // Lấy danh sách các BlogTagEntity liên quan đến BlogEntity
+                List<BlogTagEntity> blogTagEntities = blogTagRepository.findByBlog(blogEntity);
+
+                for (BlogTagEntity blogTagEntity : blogTagEntities) {
+                    // Lấy thông tin TagEntity từ BlogTagEntity
+                    TagEntity tagEntity = blogTagEntity.getTag();
+                    if (tagEntity != null) {
+                        // Thêm tên tag vào danh sách
+                        nameTags.add(tagEntity.getName());
+                    }
+                }
+
+                // Thiết lập thông tin cho BlogResponse
+                blogResponse.setIdBlog(blogEntity.getId());
+                blogResponse.setTitle(blogEntity.getTitle());
+                blogResponse.setImage(blogEntity.getImage());
+                blogResponse.setContent(blogEntity.getContent());
+                blogResponse.setNameUser(blogEntity.getIdUser().getUsername());
+                blogResponse.setCreateDate(String.valueOf(blogEntity.getCreateDate()));
+                blogResponse.setNameTag(nameTags.toString());
+                blogResponses.add(blogResponse);
+            }
+        }
+
+        return blogResponses;
+    }
+
 
 }

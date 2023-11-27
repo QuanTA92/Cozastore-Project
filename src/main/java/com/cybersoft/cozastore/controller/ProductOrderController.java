@@ -31,25 +31,23 @@ public class ProductOrderController {
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
 
-
-
     @PostMapping("")
     public ResponseEntity<?> insertProductOrder(
             @RequestParam int idCart,
             @RequestParam int idProduct,
-            @RequestParam int quantity,
+//            @RequestParam int quantity,
             @RequestParam double price,
-            @RequestParam int idUser,
-            @RequestParam int idStatus) {
+            @RequestParam int idUser) {
 
         try {
             ProductOrderRequest productOrderRequest = new ProductOrderRequest();
             productOrderRequest.setIdCart(idCart);
             productOrderRequest.setIdProduct(idProduct);
-            productOrderRequest.setQuantity(quantity);
+            // quantity sẽ được lấy từ Cart nên không cần
+//            productOrderRequest.setQuantity(quantity);
             productOrderRequest.setPrice(price);
             productOrderRequest.setIdUser(idUser);
-            productOrderRequest.setIdStatus(idStatus);
+//            productOrderRequest.setIdStatus(idStatus);
 
             boolean isSuccess = productOrderServiceImp.insertProductOrder(productOrderRequest);
 

@@ -44,4 +44,10 @@ public class LoginService implements LoginServiceImp {
 
         return isSuccess;
     }
+
+    @Override
+    public int getUserIdByEmail(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        return userEntity != null ? userEntity.getId() : -1; // Trả về -1 nếu không tìm thấy người dùng
+    }
 }

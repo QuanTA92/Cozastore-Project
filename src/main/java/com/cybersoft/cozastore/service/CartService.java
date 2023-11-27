@@ -80,14 +80,15 @@ public class CartService implements CartServiceImp {
     public List<CartResponse> getCart(int idUser) {
         List<CartEntity> cartEntities = cartRepository.findAll();
         List<CartResponse> cartResponses = new ArrayList<>();
-        for (CartEntity c: cartEntities){
-            if (c.getUser().getId() == idUser){
+        for (CartEntity cartEntity: cartEntities){
+            if (cartEntity.getUser().getId() == idUser){
                 CartResponse cartTemp = new CartResponse();
 
-                cartTemp.setCart(c.getId());
-                cartTemp.setQuanity(c.getQuanity());
-                cartTemp.setNameProduct(c.getProduct().getName());
-
+                cartTemp.setCart(cartEntity.getId());
+                cartTemp.setQuanity(cartEntity.getQuanity());
+                cartTemp.setNameProduct(cartEntity.getProduct().getName());
+                cartTemp.setImageProduct(cartEntity.getProduct().getImage());
+                cartTemp.setPrice((int) cartEntity.getProduct().getPrice());
                 cartResponses.add(cartTemp);
 
             }

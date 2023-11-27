@@ -1,8 +1,10 @@
 package com.cybersoft.cozastore.controller;
 
 import com.cybersoft.cozastore.payload.BaseResponse;
+import com.cybersoft.cozastore.payload.response.UserProfileResponse;
 import com.cybersoft.cozastore.payload.response.UserResponse;
 import com.cybersoft.cozastore.service.imp.UserServiceImp;
+import com.cybersoft.cozastore.util.JwtHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,9 @@ public class UserController {
 
     @Autowired
     private UserServiceImp userServiceImp;
+
+    @Autowired
+    private JwtHelper jwtHelper;
 
     @GetMapping("")
     public ResponseEntity<?> getALlUser() {
@@ -82,5 +87,17 @@ public class UserController {
             return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
         }
     }
+
+    @PostMapping("/decode-token")
+    public ResponseEntity<?> decodeToken(@RequestParam String token) {
+        try {
+            int userId = jwtHelper.getUserIdFromToken(token);
+            // Có thể thêm các thông tin khác cần thiết vào đây
+            return new ResponseEntity<>(new UserProfileResponse(userId), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Invalid token", HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
 }

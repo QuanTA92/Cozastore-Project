@@ -6,4 +6,5 @@ public interface LoginServiceImp {
 
     boolean insertUser(SignUpRequest signUpRequest);
 
+    int getUserIdByEmail(String userEmail);
 }

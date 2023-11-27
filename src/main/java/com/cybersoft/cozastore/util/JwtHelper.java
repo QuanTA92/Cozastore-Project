@@ -1,5 +1,6 @@
 package com.cybersoft.cozastore.util;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -18,7 +19,7 @@ public class JwtHelper {
 
     private long expiredTime = 8 * 60 * 60 * 1000;
 
-    public String generateToken(String data){
+    public String generateToken(String data, int userId){
         // Lấy key đã lưu trữ và sử dụng để tạo ra token
         SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secKey));
 
@@ -29,6 +30,7 @@ public class JwtHelper {
 
         String token = Jwts.builder()
                 .setSubject(data)
+                .claim("userId", userId)
                 .signWith(key)
                 .setExpiration(newExpiraDate)
                 .compact();
@@ -46,6 +48,17 @@ public class JwtHelper {
                 .getBody().getSubject(); // Lấy nội dung lưu trữ trong token
 
         return data;
+    }
+
+    public int getUserIdFromToken(String token) {
+        SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secKey));
+
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key).build()
+                .parseClaimsJws(token)
+                .getBody();
+
+        return claims.get("userId", Integer.class);
     }
 
 }

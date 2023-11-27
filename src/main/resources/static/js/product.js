@@ -19,7 +19,7 @@ $(document).ready(function () {
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
                         <div class="block2">
                             <div class="block2-pic hov-img0">
-                                <img src="images/${product.image}" alt="IMG-PRODUCT">
+                                <img src="images/${product.image}" alt="IMG-PRODUCT"  width="270" height="270">
                                 <a href="product-detail.html?productId=${product.idProduct}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                     Quick View
                                 </a>
